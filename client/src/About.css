@@ -12,7 +12,7 @@
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #333;
+    color: #1d079b;
   }
   
   .about-image {
@@ -26,7 +26,7 @@
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 15px;
-    color: #555;
+    color: #11c4e4;
   }
   
   ul {
@@ -40,7 +40,7 @@
     margin: 30px auto;
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #4CAF50;
+    background-color: #21bd26;
     color: white;
     border: none;
     border-radius: 5px;
@@ -49,6 +49,6 @@
   }
   
   .back-button:hover {
-    background-color: #45a049;
+    background-color: #b4f10b;
   }
   
