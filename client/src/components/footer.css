@@ -1,0 +1,23 @@
+#footer .footer-content ul {
+    list-style: none;
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+  
+  #footer .footer-content div {
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+  }
+  
+  #footer .footer-content {
+    text-align: center; /* Align items horizontally */
+  }
+  
+  @media (max-width: 768px) {
+    #footer .footer-content div {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  
