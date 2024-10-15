@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./componenets/Login";
-import Signup from "./componenets/SignUp";
-import ProtectedRoute from "./componenets/ProdectedRoute";
-import Home from "./componenets/Home";
-import About from "./componenets/About";
+import Login from "./components/Login";
+import Signup from "./components/SignUp";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Home from "./components/Home";
+import About from "./components/About";
 
 function App() {
   const isSignedUp = localStorage.getItem('isSignedUp');
@@ -12,6 +12,7 @@ function App() {
   return (
     <>
     <Router>
+      <div>
       <Routes>
         <Route path="/" element={isSignedUp ? <Navigate to="/login" /> : <Navigate to="/signup" />} />
         <Route path="/signup" element={<Signup />} />
@@ -19,10 +20,10 @@ function App() {
         <Route path="/about" element={<About/>}/>
         <Route path="/home" element={<ProtectedRoute component={Home} />} />
       </Routes>
+      </div>
+     
     </Router>
-    <div>
-      
-    </div>
+  
     </>
   );
  
