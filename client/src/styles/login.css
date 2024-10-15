@@ -1,0 +1,22 @@
+/* Login-specific styles */
+.login-container {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .forgot-password {
+    margin-top: 10px;
+    background-color: transparent;
+    color: #007BFF;
+    border: none;
+    cursor: pointer;
+  }
+  

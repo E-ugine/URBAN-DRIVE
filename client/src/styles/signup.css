@@ -1,0 +1,14 @@
+/* Signup-specific styles */
+.signup-container {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
+  
