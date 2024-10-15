@@ -1,13 +1,13 @@
 // About.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import './About.css'; // Import the CSS file for styling
+import '../styles/About.css'
 
 function About() {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate('/'); // Navigate back to the home page
+    navigate('/');
   };
 
   return (

@@ -28,9 +28,9 @@ function Login() {
     authenticate(username, password)
       .then(() => {
         localStorage.setItem('isAuthenticated', 'true');
-        localStorage.setItem('username', username); // Store username
+        localStorage.setItem('username', username); 
         setUsername("");
-        setPassword(""); // Clear input fields
+        setPassword(""); 
         navigate(location.state?.from || '/');
       })
       .catch(() => {
