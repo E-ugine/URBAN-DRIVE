@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/login.css'
+import Footer from './Footer';
 
 async function authenticate(username, password) {
   const response = await fetch('/api/authenticate', {
@@ -48,6 +49,7 @@ function Login() {
   }
 
   return (
+    <>
     <div className="login-container">
       <form onSubmit={handleSubmit}>
         <label>
@@ -73,6 +75,8 @@ function Login() {
         Forgot Password?
       </button>
     </div>
+    <Footer />
+    </>
   );
 }
 
