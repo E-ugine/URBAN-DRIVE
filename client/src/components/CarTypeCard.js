@@ -2,9 +2,7 @@ import React from "react";
 
 function CarTypeCard(){
     return(
-        <div>
-
-        </div>
+        <div></div>
     )
 }
 export default CarTypeCard;

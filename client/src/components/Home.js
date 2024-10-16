@@ -1,50 +1,66 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react';
 import Hero from './Hero';
 import CarsCard from './CarsCard';
-import CarTypeCard from './CarTypeCard';
-import CarsFilter from './CarsFilter';
-import { useOutletContext } from 'react-router-dom'
+import SearchBar from './SearchBar';
 
 function Home() {
-//   const {cars, handleChange, filters, handleDelete} = useOutletContext();
-// const[type, setType] = useState("");
-// const [currentPage, setCurrentPage] = useState(1);
-// const carsPerPage = 4;
+  const [cars, setCars] = useState([]);
+  const [filters, setFilters] = useState({ name: '' });
+  const [type, setType] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const carsPerPage = 2;
+  const [loading, setLoading] = useState(true);
 
-// function handleTypeClick(e){
-//   const selectedType = e.target.getAttribute('type');
-//   if (selectedType === type) {
-//     setType("");
-//   }
-//   else{
-//     setType(selectedType);
-//   }
-// }
+  useEffect(() => {
+    fetch('http://localhost:3000/cars')
+      .then((response) => response.json())
+      .then((data) => {
+        setCars(data);
+        setLoading(false);
+      })
+      .catch((error) => console.error('Error fetching cars data:', error));
+  }, []);
 
-// const carType = cars.reduce((acc, car) => {
-//   acc[car.carType] = (acc[car.carType] || 0) + 1;
-//   return acc;
-// }, {});
-// const carTypeCount = Object.entries(carType)
+ 
+  const filteredCars = cars.filter((car) => {
+      return type ? car.carType === type : true;
+    })
+ cars.filter((car) => {
+      return filters.name ? car.name === filters.name : true;
+    });
 
-// const filteredCars = cars.filter(car => {
-//   return (
-//     (type? car.carType === type : true) &&
-//     (filters.name ? car.name === filters.name : true)
-//   )
-// })
+  const totalPages = Math.ceil(filteredCars.length / carsPerPage);
+  const displayedCars = filteredCars.slice(
+    (currentPage - 1) * carsPerPage,
+    currentPage * carsPerPage
+  );
 
+  if (loading) {
+    return <p>Loading cars data...</p>;
+  }
 
   return (
-    <>
-    <Hero/>
-    {/* <CarsFilter filters={filters} handleChange={handleChange} /> */}
-    <div className='car-type-section'>
-    <small><em className='dash'>———</em> Car Types</small>
-    <h2>Available <em>Cars</em></h2>
+    <div className="home">
+      <Hero />
+      <SearchBar/>
+      <div className="properties-list">
+        {displayedCars.map((car) => (
+          <CarsCard key={car.id} car={car} />
+        ))}
+      </div>
+      <div className="pagination">
+        {[...Array(totalPages)].map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentPage(index + 1)}
+            className={currentPage === index + 1 ? 'active' : ''}
+          >
+            {index + 1}
+          </button>
+        ))}
+      </div>
     </div>
-    </>
-      
-  )
+  );
 }
+
 export default Home;
