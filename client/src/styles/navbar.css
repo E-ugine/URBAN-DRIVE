@@ -30,14 +30,14 @@ header nav ul li a{
     padding:  2rem;
     font-weight: bold;
     transition: 0.3s ease;
-    color: #1085ff;
+    color: green;
 }
 
 header nav ul li a:active,
 header nav ul li a:hover,
 header nav ul li a:focus,
 header nav ul li a.current {
-    color:green;
+    color:#1085ff;
   font-weight: bold;
 }
 
@@ -50,7 +50,7 @@ header nav ul li a.current {
   }
   
 .user-details button {
-    background-color:#1085ff;
+    background-color:green;
     font-weight: bold;
     color: white;  
     margin: 5px 0px;  

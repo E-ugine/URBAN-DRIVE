@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/Home";
 import About from "./components/About";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const isSignedUp = localStorage.getItem('isSignedUp');
@@ -14,6 +15,7 @@ function App() {
     <>
     <div>
    <Navbar/>
+   <Home/>
     </div>
     <Router>
       <div>
@@ -22,11 +24,14 @@ function App() {
         {/* <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} /> */}
         <Route path="/about" element={<About/>}/>
-        <Route path="/home" element={<ProtectedRoute component={Home} />} />
+        {/* <Route path="/home" element={<ProtectedRoute component={Home} />} /> */}
       </Routes>
       </div>
      
     </Router>
+    <div>
+      <Footer/>
+    </div>
   
     </>
   );
