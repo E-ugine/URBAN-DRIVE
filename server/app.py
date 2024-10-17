@@ -88,7 +88,7 @@ class Users(Resource):
 api.add_resource(Users, '/users')
 
 
-### CARS RESOURCE ###
+## CARS RESOURCE
 class Cars(Resource):
     def get(self):
         cars = [car.to_dict() for car in Car.query.all()]
@@ -132,7 +132,7 @@ api.add_resource(Cars, '/cars')
 api.add_resource(CarByID, '/cars/<int:id>')
 
 
-### BOOKINGS RESOURCE ###
+## BOOKINGS RESOURCE 
 class Bookings(Resource):
     @jwt_required()
     def get(self):
@@ -158,7 +158,7 @@ class Bookings(Resource):
 api.add_resource(Bookings, '/bookings')
 
 
-### PAYMENTS RESOURCE ###
+## PAYMENTS RESOURCE 
 class Payments(Resource):
     @jwt_required()
     def get(self):
@@ -183,7 +183,7 @@ class Payments(Resource):
 api.add_resource(Payments, '/payments')
 
 
-### FEATURES RESOURCE ###
+## FEATURES RESOURCE 
 class Features(Resource):
     def get(self):
         features = [feature.to_dict() for feature in Feature.query.all()]
