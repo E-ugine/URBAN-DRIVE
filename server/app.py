@@ -16,7 +16,7 @@ db.init_app(app)
 
 api = Api(app)
 
-### RESOURCES ###
+##RESOURCES
 
 # USERS RESOURCE
 class Users(Resource):
