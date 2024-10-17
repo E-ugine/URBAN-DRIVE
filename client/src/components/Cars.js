@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import CarsCard from './CarsCard';
-import CarsFilter from './CarsFilter';
-import SearchBar from '../components/SearchBar';
 import '../styles/cars.css';
 
 function Cars() {
   const [cars, setCars] = useState([]);
-  const [filters, setFilters] = useState({ price: '', name: '' });
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -24,40 +21,30 @@ function Cars() {
     setSearch(event.target.value);
   };
 
-  const handleChange = (event) => {
-    setFilters({
-      ...filters,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const filteredCars = cars
-    .filter((car) => {
-      const toLowerCaseSearch = search.toLowerCase();
-      return (
-        car.name.toLowerCase().includes(toLowerCaseSearch) ||
-        car.carType.toLowerCase().includes(toLowerCaseSearch) ||
-        car.description.toLowerCase().includes(toLowerCaseSearch)
-      );
-    })
-    .filter((car) => {
-      return (
-        (filters.price ? car.price <= Number(filters.price) : true) &&
-        (filters.name ? car.name === filters.name : true)
-      );
-    });
+  const filteredCars = cars.filter((car) => {
+    const toLowerCaseSearch = search.toLowerCase();
+    return (
+      car.name.toLowerCase().includes(toLowerCaseSearch) ||
+      car.type.toLowerCase().includes(toLowerCaseSearch) ||
+      car.description.toLowerCase().includes(toLowerCaseSearch)
+    );
+  });
 
   if (loading) {
     return <p>Loading cars data...</p>;
   }
 
   return (
-    <div className="cars-container">
-      <div className="cars-header">
-        <h1>All Cars</h1>
-        <SearchBar search={search} handleSearchChange={handleSearchChange} />
+    <div className="cars-page">
+      <h1>Our Cars</h1>
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Find cars..."
+          value={search}
+          onChange={handleSearchChange}
+        />
       </div>
-      <CarsFilter filters={filters} handleChange={handleChange} />
       <div className="car-list">
         {filteredCars.map((car) => (
           <CarsCard key={car.id} car={car} />
