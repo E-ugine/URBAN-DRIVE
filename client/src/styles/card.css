@@ -1,11 +1,14 @@
+.cars{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
 .car-card {
   background-color:silver;
   border-radius: 10px;
   margin-bottom: 10px;
   width: 50vh;
-  justify-content: center;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
 }
 
 .car-card:hover {
@@ -13,7 +16,7 @@
 }
 
 .car-card-img-container {
-  position: relative;
+ 
   height:200px ;
   width: 60vw;
 }
