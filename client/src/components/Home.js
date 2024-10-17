@@ -1,4 +1,3 @@
-// Home.js
 import React from 'react';
 import Hero from './Hero';
 import Services from './Services';
@@ -10,7 +9,7 @@ function Home() {
     <div>
       <Hero />
       <div className="welcome-section">
-        <h2>Welcome to CarBook</h2>
+        <h2>Welcome to UrbanDrive</h2>
         <p>Your journey starts here. Find the perfect car for your adventure.</p>
       </div>
       <Services />
