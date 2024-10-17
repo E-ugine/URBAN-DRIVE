@@ -8,11 +8,11 @@ function Home() {
   const [filters, setFilters] = useState({ name: '' });
   const [type, setType] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const carsPerPage = 2;
+  const carsPerPage = 4;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3000/cars')
+    fetch('http://localhost:3001/cars')
       .then((response) => response.json())
       .then((data) => {
         setCars(data);
