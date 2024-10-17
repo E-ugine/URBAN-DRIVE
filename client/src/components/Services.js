@@ -1,4 +1,3 @@
-// Services.js
 import React from "react";
 import '../styles/services.css';
 import { FaCar, FaWrench, FaMoneyBill, FaLifeRing } from 'react-icons/fa';
@@ -26,7 +25,6 @@ function Services() {
         ))}
       </div>
       <div>
-        <p>Good</p>
       </div>
     </div>
   );
