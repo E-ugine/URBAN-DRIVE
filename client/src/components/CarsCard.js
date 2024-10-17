@@ -3,7 +3,8 @@ import '../styles/card.css';
 
 function CarsCard({ car }) {
   return (
-    <div className="car-card" id={car.id}>
+    <div className='cars'>
+      <div className="car-card" id={car.id}>
       <div className="car-card-img-container">
         {car.image_url ? ( 
           <img
@@ -36,6 +37,7 @@ function CarsCard({ car }) {
         <button className="btn book-now">Book now</button>
         <button className="btn details">Details</button>
       </div>
+    </div>
     </div>
   );
 }
