@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Hero from './Hero';
 import CarsCard from './CarsCard';
 import SearchBar from './SearchBar';
+import Services from './Services';
 
 function Home() {
   const [cars, setCars] = useState([]);
@@ -40,6 +41,7 @@ function Home() {
   }
 
   return (
+   <>
     <div className="home">
       <Hero />
       <SearchBar/>
@@ -60,6 +62,9 @@ function Home() {
         ))}
       </div>
     </div>
+    <Services/>
+   </>
+    
   );
 }
 
