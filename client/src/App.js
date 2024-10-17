@@ -1,41 +1,32 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-// import Login from "./components/Login";
-// import Signup from "./components/SignUp";
-import ProtectedRoute from "./components/ProtectedRoute";
+import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-// import About from "./components/About";
+import About from "./components/About";
+import Cars from "./components/Cars";
+import CarsDetail from "./components/CarsDetail";
+import Services from "./components/Services";
+import Pricing from "./components/Pricing";
+import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 
 function App() {
-  const isSignedUp = localStorage.getItem('isSignedUp');
-
   return (
-    <>
-    <div>
-   <Navbar/>
-   <Home/>
-    </div>
     <Router>
-      <div>
+      <Navbar/>
       <Routes>
-        <Route path="/" element={isSignedUp ? <Navigate to="/login" /> : <Navigate to="/signup" />} />
-        {/* <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/about" element={<About/>}/> */}
-        {/* <Route path="/home" element={<ProtectedRoute component={Home} />} /> */}
+        <Route path="/" element={<Home/>}/>
+        <Route path="/about" element={<About/>}/>
+        <Route path="/services" element={<Services/>}/>
+        <Route path="/pricing" element={<Pricing/>}/>
+        <Route path="/cars" element={<Cars/>}/>
+        <Route path="/cars/:id" element={<CarsDetail/>}/>
+        <Route path="/contact" element={<Contact/>}/>
       </Routes>
-      </div>
-     
+      <Footer/>
     </Router>
-    <div>
-      {/* <Footer/> */}
-    </div>
-  
-    </>
   );
- 
 }
 
 export default App;
