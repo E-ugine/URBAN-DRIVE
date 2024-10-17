@@ -1,17 +1,25 @@
 .cars {
-  display: flex;
+  display: inline;
   flex-wrap: wrap; 
   justify-content: space-around; 
   gap: 20px; 
 }
 
 .car-card {
-  background-color: silver;
+  /* background-color: silver;
   border-radius: 10px;
   margin-bottom: 10px;
-  width: 30vw; 
-  flex-shrink: 0; 
+  width: 30vw;  */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+ 
 }
+
 
 .car-card:hover {
   transform: scale(1.05);

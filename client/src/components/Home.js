@@ -3,6 +3,8 @@ import Hero from './Hero';
 import CarsCard from './CarsCard';
 import SearchBar from './SearchBar';
 import Services from './Services';
+import About from './About';
+import Footer from './Footer'
 
 function Home() {
   const [cars, setCars] = useState([]);
@@ -43,8 +45,10 @@ function Home() {
   return (
    <>
     <div className="home">
-      <Hero />
+      {/* <Hero /> */}
       <SearchBar/>
+      <About/>
+      <Footer/>
       <div className="properties-list">
         {displayedCars.map((car) => (
           <CarsCard key={car.id} car={car} />
@@ -61,9 +65,12 @@ function Home() {
           </button>
         ))}
       </div>
+     
     </div>
-    <Services/>
+    {/* <Services/> */}
+    
    </>
+
     
   );
 }
