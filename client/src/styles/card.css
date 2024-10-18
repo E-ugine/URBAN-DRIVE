@@ -42,7 +42,7 @@
 
 .car-card-price {
   font-size: 1.2em;
-  color: #f10909;
+  color: #007bff;
   margin-bottom: 20px;
 }
 
@@ -64,9 +64,9 @@
   color: #fff;
 }
 
-.book-now:hover {
+/* .book-now:hover {
   background-color: #c10808;
-}
+} */
 
 .details {
   background-color: #007bff;

@@ -1,6 +1,12 @@
 .navbar {
-  color: #fff;
+  background-color: silver;
   padding: 20px 0;
+  position: fixed; 
+  top: -30px; /* Hide the navbar 50 px outside of the top view */
+  width: 100%; /* Full width */
+  transition: top 0.3s;
+  /* top: 0;  */
+  
 }
 
 .navbar-container {
@@ -30,10 +36,11 @@
   text-decoration: none;
   font-size: 1em;
   font-weight: bold;
+  margin-right: 90px;
 }
 
 .nav-links li a:hover {
-  color: #f10909;
+  color: green;
 }
 
 h1{

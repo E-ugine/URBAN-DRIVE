@@ -60,12 +60,10 @@ const Footer = () => {
             </li>
             <li>
               <Mail size={20} />
-              <a href="mailto:info@example.com">info@example.com</a>
+              <a href="mailto:info@example.com">info@urbandrive.com</a>
             </li>
           </ul>
-        </div>
-
-        {/* Newsletter */}
+        </div>       
         <div className="footer-section">
           <h5>Newsletter</h5>
           <form>
@@ -74,8 +72,6 @@ const Footer = () => {
           </form>
         </div>
       </div>
-
-      {/* Rights */}
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} All rights reserved</p>
       </div>

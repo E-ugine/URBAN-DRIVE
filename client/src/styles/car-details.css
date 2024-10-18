@@ -42,6 +42,7 @@
   .car-details-info p {
     font-size: 1em;
     margin-bottom: 20px;
+    
   }
   
   .book-now {
@@ -54,6 +55,6 @@
   }
   
   .book-now:hover {
-    background-color: #c10808;
+    background-color: greenyellow;
   }
   

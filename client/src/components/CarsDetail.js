@@ -17,7 +17,6 @@ function CarsDetail() {
       })
       .catch((error) => console.error('Error fetching car data:', error));
   }, [id]);
-
   if (loading) {
     return <p>Loading car details...</p>;
   }
