@@ -12,8 +12,9 @@ function Home() {
         <h2>Welcome to UrbanDrive</h2>
         <p>Your journey starts here. Find the perfect car for your adventure.</p>
       </div>
-      <Services />
       <AvailableCars />
+      <Services />
+     
       {/* Add Testimonials and some  Blog possibly  */}
     </div>
   );

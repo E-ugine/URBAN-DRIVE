@@ -15,11 +15,9 @@ function AvailableCars() {
       })
       .catch(error => console.error('Error fetching cars:', error));
   }, []);
-
   if (loading) {
     return <p>Loading cars...</p>;
   }
-
   return (
     <div className="available-cars-section">
       <h2>Available Cars</h2>
