@@ -12,6 +12,7 @@ werkzeug = "*"
 flask-restful = "*"
 flask-bcrypt = "*"
 flask-jwt-extended = "*"
+sqlalchemy-serializer = "*"
 
 [dev-packages]
 
