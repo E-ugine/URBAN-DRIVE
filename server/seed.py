@@ -12,13 +12,13 @@ def seed_data():
         db.create_all()
 
         user1 = User(
-            username="john_doe",
-            email="john@example.com",
+            username="eugine_roy",
+            email="eugineroy@gmail.com",
             password_hash=generate_password_hash("password123").decode('utf-8')
         )
         user2 = User(
-            username="jane_smith",
-            email="jane@example.com",
+            username="frankie_onesmus",
+            email="frankone@gmail.com",
             password_hash=generate_password_hash("securepass").decode('utf-8')
         )
 
@@ -67,13 +67,13 @@ def seed_data():
 
         # Seed Payments
         payment1 = Payment(
-            amount=120.00,
+            amount=5000.00,
             payment_method="Credit Card",
             user_id=user1.id,
             booking_id=booking1.id
         )
         payment2 = Payment(
-            amount=70.00,
+            amount=7000.00,
             payment_method="PayPal",
             user_id=user2.id,
             booking_id=booking2.id
@@ -84,6 +84,5 @@ def seed_data():
 
         print("Database seeded successfully!")
 
-# Run the seeding function
 if __name__ == '__main__':
     seed_data()
