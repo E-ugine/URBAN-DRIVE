@@ -2,10 +2,11 @@
   background-color: silver;
   padding: 20px 0;
   position: fixed; 
-  top: -30px; /* Hide the navbar 50 px outside of the top view */
-  width: 100%; /* Full width */
+  top: -30px; 
+  z-index: 1000;
+  width: 100%; 
   transition: top 0.3s;
-  /* top: 0;  */
+ 
   
 }
 
