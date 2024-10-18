@@ -117,17 +117,17 @@ def seed_data():
         # Seed Bookings
         booking1 = Booking(
             user_id=user1.id,
-            car_id=car1.id,
+            car_id=cars.id,
             start_date=datetime.now(),
             end_date=datetime.now() + timedelta(days=3),
-            total_cost=120.00
+            total_cost=1200.00
         )
         booking2 = Booking(
             user_id=user2.id,
-            car_id=car2.id,
+            car_id=cars.id,
             start_date=datetime.now(),
             end_date=datetime.now() + timedelta(days=2),
-            total_cost=70.00
+            total_cost=700.00
         )
 
         db.session.add_all([booking1, booking2])
