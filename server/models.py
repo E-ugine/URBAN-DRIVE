@@ -5,6 +5,12 @@ metadata = MetaData()
 
 db = SQLAlchemy(metadata=metadata)
 
+# a joint 'association' table between cars and features
+car_features = db.Table('car_features',
+    db.Column('car_id', db.Integer, db.ForeignKey('cars.id'), primary_key=True),
+    db.Column('feature_id', db.Integer, db.ForeignKey('features.id'), primary_key=True)
+)
+
 
 class User(db.Model):
     __tablename__ = "users"
@@ -35,6 +41,7 @@ class Car(db.Model):
     status = db.Column(db.String, default="available") # check on use of default
     price_per_day = db.Column(db.Float)
     bookings = db.relationship('Booking', backref='car', lazy=True) # one car : many bookings, a one-to-many relationship
+    features = db.relationship('Feature', secondary=car_features, backref=db.backref('cars', lazy='dynamic')) # many to many relationship
 
     def __repr__(self):
         return f"<Car {self.id}, {self.make}, {self.model}>"
@@ -65,3 +72,13 @@ class Payment(db.Model):
     payment_date = db.Column(db.DateTime, nullable=False)
     status = db.Column(db.String, default="pending") # pending or active
    
+
+class Feature(db.Model):
+    __tablename__ = "features"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False) # name of car
+    description = db.Column(db.String, nullable=False) # possibly what is not of make or model
+    average_rating = db.Column(db.Float) # include a rating mechanism for the cars
+
+
