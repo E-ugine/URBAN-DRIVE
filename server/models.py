@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
-from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy_serializer import SerializerMixin # how do we use this though? does it have to go hand in hand with serialize_rules?
 
 
 metadata = MetaData()
@@ -14,7 +14,7 @@ car_features = db.Table('car_features',
 )
 
 
-class User(db.Model):
+class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -31,7 +31,7 @@ class User(db.Model):
         return f"<Customer {self.id}, {self.first_name}>"
     
 
-class Car(db.Model):
+class Car(db.Model, SerializerMixin):
     __tablename__ = "cars"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -49,7 +49,7 @@ class Car(db.Model):
         return f"<Car {self.id}, {self.make}, {self.model}>"
 
 
-class Booking(db.Model):
+class Booking(db.Model, SerializerMixin):
     __tablename__ = "bookings"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -65,7 +65,7 @@ class Booking(db.Model):
         return f"<Car {self.id}, {self.customer_id}, {self.car_id}>"
     
 
-class Payment(db.Model):
+class Payment(db.Model, SerializerMixin):
     __tablename__ = "payments"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -75,7 +75,7 @@ class Payment(db.Model):
     status = db.Column(db.String, default="pending") # pending or active
    
 
-class Feature(db.Model):
+class Feature(db.Model, SerializerMixin):
     __tablename__ = "features"
 
     id = db.Column(db.Integer, primary_key=True)
