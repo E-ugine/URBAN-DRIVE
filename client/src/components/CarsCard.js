@@ -1,8 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 import '../styles/card.css';
 
 function CarsCard({ car }) {
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleBookNow = () => {
+    if (user) {
+      navigate(`/cars/${car.id}/book`);
+    } else {
+      const signUp = window.confirm('You must be logged in to book a car. Would you like to sign up?');
+      if (signUp) {
+        navigate('/signup');
+      }
+    }
+  };
+
   return (
     <div className="car-card" id={car.id}>
       <div className="car-card-img-container">
@@ -17,7 +32,6 @@ function CarsCard({ car }) {
         )}
         <div className="car-card-tags">
           <small>{car.status}</small>
-          {/* <small>{car.type}</small> */}
         </div>
       </div>
       <div className="car-card-content">
@@ -28,8 +42,7 @@ function CarsCard({ car }) {
         </div>
         <div className="car-card-actions">
           <Link to={`/cars/${car.id}`} className="btn details">Details</Link>
-          <Link to={'/cars'} className="btn details">Book Now</Link>
-          {/* <button className="btn book-now">Book now</button> */}
+          <button onClick={handleBookNow} className="btn book-now">Book Now</button>
         </div>
       </div>
     </div>
