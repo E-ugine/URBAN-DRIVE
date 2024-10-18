@@ -28,7 +28,8 @@ function CarsCard({ car }) {
         </div>
         <div className="car-card-actions">
           <Link to={`/cars/${car.id}`} className="btn details">Details</Link>
-          <button className="btn book-now">Book now</button>
+          <Link to={'/cars'} className="btn details">Book Now</Link>
+          {/* <button className="btn book-now">Book now</button> */}
         </div>
       </div>
     </div>
