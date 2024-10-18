@@ -26,11 +26,55 @@ def seed_data():
         db.session.commit()
 
         # Seed Cars
-        car1 = Car(make="Toyota", model="Camry", year=2021, price_per_day=40.00)
-        car2 = Car(make="Honda", model="Civic", year=2022, price_per_day=35.00)
-        car3 = Car(make="Tesla", model="Model 3", year=2023, price_per_day=70.00)
+        cars = [
+    Car(make="Mercedes-Benz", model="S-Class", year=2022, price_per_day=200.00,
+        image_url="https://example.com/mercedes_sclass.jpg"),
+    Car(make="BMW", model="7 Series", year=2021, price_per_day=180.00,
+        image_url="https://example.com/bmw_7series.jpg"),
+    Car(make="Audi", model="A8", year=2023, price_per_day=190.00,
+        image_url="https://example.com/audi_a8.jpg"),
+    Car(make="Lexus", model="LS", year=2022, price_per_day=170.00,
+        image_url="https://example.com/lexus_ls.jpg"),
+    Car(make="Porsche", model="Panamera", year=2023, price_per_day=250.00,
+        image_url="https://example.com/porsche_panamera.jpg"),
+    Car(make="Bentley", model="Continental GT", year=2021, price_per_day=350.00,
+        image_url="https://example.com/bentley_continental.jpg"),
+    Car(make="Rolls-Royce", model="Phantom", year=2022, price_per_day=500.00,
+        image_url="https://example.com/rolls_royce_phantom.jpg"),
+    Car(make="Lamborghini", model="Huracan", year=2023, price_per_day=450.00,
+        image_url="https://example.com/lamborghini_huracan.jpg"),
+    Car(make="Ferrari", model="488 Spider", year=2022, price_per_day=470.00,
+        image_url="https://example.com/ferrari_488.jpg"),
+    Car(make="Maserati", model="Ghibli", year=2021, price_per_day=220.00,
+        image_url="https://example.com/maserati_ghibli.jpg"),
+    Car(make="Aston Martin", model="DB11", year=2023, price_per_day=320.00,
+        image_url="https://example.com/astonmartin_db11.jpg"),
+    Car(make="Jaguar", model="XJ", year=2021, price_per_day=210.00,
+        image_url="https://example.com/jaguar_xj.jpg"),
+    Car(make="Tesla", model="Model S Plaid", year=2023, price_per_day=300.00,
+        image_url="https://example.com/tesla_model_s.jpg"),
+    Car(make="BMW", model="i8", year=2022, price_per_day=280.00,
+        image_url="https://example.com/bmw_i8.jpg"),
+    Car(make="Mercedes-Benz", model="EQS", year=2023, price_per_day=290.00,
+        image_url="https://example.com/mercedes_eqs.jpg"),
+    Car(make="Audi", model="RS7", year=2022, price_per_day=240.00,
+        image_url="https://example.com/audi_rs7.jpg"),
+    Car(make="Bentley", model="Flying Spur", year=2021, price_per_day=380.00,
+        image_url="https://example.com/bentley_flyingspur.jpg"),
+    Car(make="Rolls-Royce", model="Ghost", year=2023, price_per_day=480.00,
+        image_url="https://example.com/rolls_royce_ghost.jpg"),
+    Car(make="Lamborghini", model="Aventador", year=2021, price_per_day=500.00,
+        image_url="https://example.com/lamborghini_aventador.jpg"),
+    Car(make="Ferrari", model="Roma", year=2022, price_per_day=460.00,
+        image_url="https://example.com/ferrari_roma.jpg"),
+    Car(make="Porsche", model="911 Turbo S", year=2023, price_per_day=370.00,
+        image_url="https://example.com/porsche_911.jpg"),
+    Car(make="McLaren", model="720S", year=2022, price_per_day=400.00,
+        image_url="https://example.com/mclaren_720s.jpg"),
+]
+        
 
-        db.session.add_all([car1, car2, car3])
+        db.session.add_all([cars])
         db.session.commit()
 
         # Seed Features
