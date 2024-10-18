@@ -78,16 +78,40 @@ def seed_data():
         db.session.commit()
 
         # Seed Features
-        feature1 = Feature(name="Bluetooth", description="Wireless connectivity for audio devices.")
-        feature2 = Feature(name="GPS", description="Satellite navigation system.")
-        feature3 = Feature(name="Heated Seats", description="Comfortable seating in cold weather.")
+        features = [
+    Feature(name="Adaptive Cruise Control", 
+            description="Automatically adjusts speed to maintain safe distance from other vehicles."),
+    Feature(name="Premium Sound System", 
+            description="High-quality surround sound system for an immersive audio experience."),
+    Feature(name="Massage Seats", 
+            description="In-seat massage function for added comfort."),
+    Feature(name="Panoramic Sunroof", 
+            description="Large glass roof offering a wide view of the sky."),
+    Feature(name="Automatic Parking Assist", 
+            description="System that helps the car park itself."),
+    Feature(name="Ambient Interior Lighting", 
+            description="Customizable lighting for the car’s interior."),
+    Feature(name="Wireless Phone Charging", 
+            description="Cord-free charging pad for mobile devices."),
+    Feature(name="Lane Departure Warning", 
+            description="Alerts driver if the vehicle drifts out of its lane."),
+    Feature(name="Heads-Up Display", 
+            description="Projection of important driving information onto the windshield."),
+    Feature(name="Ventilated Seats", 
+            description="Keeps seats cool during warm weather."),
+    Feature(name="Soft-Close Doors", 
+            description="Automatically closes car doors gently."),
+    Feature(name="Four-Zone Climate Control", 
+            description="Allows passengers to set their own preferred temperature."),
+]
 
-        db.session.add_all([feature1, feature2, feature3])
+
+        db.session.add_all([features])
         db.session.commit()
 
         # Associate Features with Cars (Many-to-Many)
-        car1.features.extend([feature1, feature2])
-        car2.features.append(feature3)
+        cars.features.extend([features])
+        cars.features.append(features)
         db.session.commit()
 
         # Seed Bookings
