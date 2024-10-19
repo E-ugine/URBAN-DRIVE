@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import '../styles/About.css'
 
 function About() {
@@ -42,7 +41,6 @@ function About() {
         At Urban Drive, we don’t just rent cars – we offer experiences. Whether you want to explore the
         city, impress your clients, or enjoy a weekend getaway, we have the perfect vehicle for every occasion.
       </p>
-      {/* <button onClick={handleBack} className="back-button">Back to Home</button> */}
     </div>
   );
 }

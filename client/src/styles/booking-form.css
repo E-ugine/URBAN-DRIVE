@@ -4,6 +4,17 @@
   padding: 40px 0;
 }
 
+.car-image-section {
+  flex: 1;
+  text-align: center;
+}
+
+.car-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
 .booking-info, .payment-info {
   flex: 1;
   max-width: 45%;
@@ -13,10 +24,6 @@
   font-size: 1.5rem;
   color: #03127c;
   margin-bottom: 20px;
-}
-
-.booking__form {
-  width: 48%;
 }
 
 .booking__form input, 
@@ -37,11 +44,6 @@ textarea.textarea {
 
 .booking__form select, .textarea {
   width: 100%;
-}
-
-.time__picker::before {
-  content: "Journey Time";
-  color: #333;
 }
 
 .payment-info .payment-options {
@@ -73,13 +75,7 @@ textarea.textarea {
     width: 100%;
   }
 
-  .booking-info, .payment-info {
+  .car-img {
     max-width: 100%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .booking__form input, .textarea, .booking__form select {
-    font-size: 0.9rem;
   }
 }

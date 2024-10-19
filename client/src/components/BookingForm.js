@@ -1,14 +1,24 @@
 import React from "react";
+import { useLocation } from "react-router-dom"; 
 import '../styles/booking-form.css';
 import { Form, FormGroup } from "reactstrap";
 
 function BookingForm() {
+  const { state } = useLocation(); 
+  const { carImage, carName, carPrice } = state || {};
+  console.log(carImage, carName, carPrice); 
+
   const submitHandler = (event) => {
     event.preventDefault();
   };
-  
+
   return (
     <div className="booking-container">
+      <div className="car-image-section">
+        <img src={carImage} alt={carName} className="car-img" />
+        <h2>{carName}</h2>
+        <p>{carPrice} / Day</p>
+      </div>
       <div className="booking-info">
         <h3>Booking Information</h3>
         <Form onSubmit={submitHandler}>
@@ -18,21 +28,18 @@ function BookingForm() {
           <FormGroup className="booking__form d-inline-block ms-1 mb-4">
             <input type="text" placeholder="Last Name" />
           </FormGroup>
-
           <FormGroup className="booking__form d-inline-block me-4 mb-4">
             <input type="email" placeholder="Email" />
           </FormGroup>
           <FormGroup className="booking__form d-inline-block ms-1 mb-4">
             <input type="number" placeholder="Phone Number" />
           </FormGroup>
-
           <FormGroup className="booking__form d-inline-block me-4 mb-4">
             <input type="text" placeholder="From Address" />
           </FormGroup>
           <FormGroup className="booking__form d-inline-block ms-1 mb-4">
             <input type="text" placeholder="To Address" />
           </FormGroup>
-
           <FormGroup className="booking__form d-inline-block me-4 mb-4">
             <select name="" id="">
               <option value="1 person">1 Person</option>
@@ -51,29 +58,19 @@ function BookingForm() {
               <option value="5+ luggage">5+ luggage</option>
             </select>
           </FormGroup>
-
           <FormGroup className="booking__form d-inline-block me-4 mb-4">
             <input type="date" placeholder="Journey Date" />
           </FormGroup>
           <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-            <input
-              type="time"
-              placeholder="Journey Time"
-              className="time__picker"
-            />
+            <input type="time" placeholder="Journey Time" className="time__picker" />
           </FormGroup>
-
           <FormGroup>
-            <textarea
-              rows={5}
-              type="textarea"
-              className="textarea"
-              placeholder="Write"
-            ></textarea>
+            <textarea rows={5} type="textarea" className="textarea" placeholder="Write"></textarea>
           </FormGroup>
         </Form>
       </div>
 
+      {/* Payment section */}
       <div className="payment-info">
         <h3>Payment Information</h3>
         <div className="payment-options">
