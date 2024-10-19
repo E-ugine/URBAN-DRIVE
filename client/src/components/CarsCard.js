@@ -4,19 +4,9 @@ import { UserContext } from '../context/UserContext';
 import '../styles/card.css';
 
 function CarsCard({ car }) {
-  const { user } = useContext(UserContext);
-  const navigate = useNavigate();
+  
 
-  const handleBookNow = () => {
-    if (user) {
-      navigate(`/cars/${car.id}/book`);
-    } else {
-      const signUp = window.confirm('You must be logged in to book a car. Would you like to sign up?');
-      if (signUp) {
-        navigate('/signup');
-      }
-    }
-  };
+
 
   return (
     <div className="car-card" id={car.id}>
@@ -42,7 +32,7 @@ function CarsCard({ car }) {
         </div>
         <div className="car-card-actions">
           <Link to={`/cars/${car.id}`} className="btn details">Details</Link>
-          <button onClick={handleBookNow} className="btn book-now">Book Now</button>
+          <button  className="btn book-now">Book Now</button>
         </div>
       </div>
     </div>
