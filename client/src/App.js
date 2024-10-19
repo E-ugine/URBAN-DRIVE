@@ -11,7 +11,6 @@ import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Bookings from "./components/Bookings";
 // import Login from "./components/Login";  
 // import Signup from "./components/SignUp"; 
 
@@ -26,7 +25,6 @@ function App() {
           <Route path="/services" element={<Services />} />
           {/* <Route path="/pricing" element={<Pricing />} /> */}
           <Route path="/cars" element={<Cars />} />
-          <Route path="/cars/:id/book" element={<Bookings />} />
           <Route path="/cars/:id" element={<CarsDetail />} />
           <Route path="/contact" element={<Contact />} />
           {/* <Route path="/login" element={<Login />} />   
