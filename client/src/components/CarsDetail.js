@@ -32,7 +32,9 @@ function CarsDetail() {
           <h2>{car.name}</h2>
           <h3>${car.price.toLocaleString()} / day</h3>
           <p>{car.description}</p>
-          <button className="btn book-now">Book Now</button>
+          <button className="btn book-now" onClick={() => navigate('/booking')}>
+            Book Now
+          </button>
         </div>
       </div>
     </div>

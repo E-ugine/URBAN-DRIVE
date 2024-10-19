@@ -19,13 +19,13 @@
     display: inline-block;
     margin-top: 30px;
     padding: 10px 20px;
-    background-color: #f10909;
+    background-color: green;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
   }
   
   .view-all-btn:hover {
-    background-color: #c10808;
+    background-color: yellowgreen;
   }
   
