@@ -10,7 +10,7 @@ function AvailableCars() {
     fetch('http://localhost:3001/cars')
       .then(response => response.json())
       .then(data => {
-        setCars(data.slice(0, 3)); 
+        setCars(data.slice(0, 4)); 
         setLoading(false);
       })
       .catch(error => console.error('Error fetching cars:', error));
@@ -20,7 +20,7 @@ function AvailableCars() {
   }
   return (
     <div className="available-cars-section">
-      <h2>Available Cars</h2>
+      <h2>Amazing Offers!!!</h2>
       <div className="car-list">
         {cars.map(car => (
           <CarsCard key={car.id} car={car} />
