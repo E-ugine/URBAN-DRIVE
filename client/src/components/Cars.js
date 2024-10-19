@@ -60,7 +60,7 @@ function Cars() {
 
   return (
     <div className="cars-page">
-      <h1>Our Cars</h1>
+      <h1>Available Cars</h1>
       
       <form onSubmit={handleSubmit} className="search-bar">
         <input
