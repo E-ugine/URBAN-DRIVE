@@ -15,7 +15,7 @@ function Home() {
       <AvailableCars />
       <Services />
      
-      {/* Add Testimonials and some  Blog possibly  */}
+      {/* We could add testimonials and some  Blog possibly  */}
     </div>
   );
 }

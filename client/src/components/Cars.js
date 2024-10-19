@@ -5,6 +5,9 @@ import '../styles/cars.css';
 function Cars() {
   const [cars, setCars] = useState([]);
   const [search, setSearch] = useState('');
+  const [minPrice, setMinPrice] = useState(''); 
+  const [maxPrice, setMaxPrice] = useState(''); 
+  const [filteredCars, setFilteredCars] = useState([]); 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -12,23 +15,44 @@ function Cars() {
       .then((response) => response.json())
       .then((data) => {
         setCars(data);
+        setFilteredCars(data); 
         setLoading(false);
       })
       .catch((error) => console.error('Error fetching cars data:', error));
   }, []);
 
-  const handleSearchChange = (event) => {
+  function handleSearchChange(event){
     setSearch(event.target.value);
   };
 
-  const filteredCars = cars.filter((car) => {
+  function handleMinPriceChange(event){
+    setMinPrice(event.target.value);
+  };
+
+  function handleMaxPriceChange (event) {
+    setMaxPrice(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); 
+
     const toLowerCaseSearch = search.toLowerCase();
-    return (
-      car.name.toLowerCase().includes(toLowerCaseSearch) ||
-      car.type.toLowerCase().includes(toLowerCaseSearch) ||
-      car.description.toLowerCase().includes(toLowerCaseSearch)
-    );
-  });
+    const filtered = cars.filter((car) => {
+      const matchesSearch =
+        car.name.toLowerCase().includes(toLowerCaseSearch) ||
+        car.type.toLowerCase().includes(toLowerCaseSearch) ||
+        car.description.toLowerCase().includes(toLowerCaseSearch);
+
+      const matchesMinPrice = minPrice === '' || car.price >= Number(minPrice);
+      const matchesMaxPrice = maxPrice === '' || car.price <= Number(maxPrice);
+
+      return matchesSearch && matchesMinPrice && matchesMaxPrice;
+    });
+    setFilteredCars(filtered); 
+    setSearch('');
+    setMinPrice('');
+    setMaxPrice('');
+  };
 
   if (loading) {
     return <p>Loading cars data...</p>;
@@ -37,18 +61,34 @@ function Cars() {
   return (
     <div className="cars-page">
       <h1>Our Cars</h1>
-      <div className="search-bar">
+      
+      <form onSubmit={handleSubmit} className="search-bar">
         <input
           type="text"
-          placeholder="Find cars..."
+          placeholder="Search cars..."
           value={search}
           onChange={handleSearchChange}
         />
-      </div>
+        <input
+          type="number"
+          placeholder="Min Price"
+          value={minPrice}
+          onChange={handleMinPriceChange}
+        />
+        <input
+          type="number"
+          placeholder="Max Price"
+          value={maxPrice}
+          onChange={handleMaxPriceChange}
+        />
+        <button type="submit">Search</button> 
+      </form>
       <div className="car-list">
-        {filteredCars.map((car) => (
-          <CarsCard key={car.id} car={car} />
-        ))}
+        {filteredCars.length > 0 ? (
+          filteredCars.map((car) => <CarsCard key={car.id} car={car} />)
+        ) : (
+          <p>No cars found matching your criteria.</p>
+        )}
       </div>
     </div>
   );
