@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/navbar.css';
 
-function Navbar() {
+function Navbar({ profile, logOut }) {
   return (
     <header className="navbar">
       <div className="navbar-container">
@@ -19,6 +19,17 @@ function Navbar() {
             <li><Link to="/contact">Contact</Link></li>
           </ul>
         </nav>
+        <div className="user-profile">
+          {profile ? (
+            <div className="profile-info">
+              <img src={profile.picture} alt="user" className="profile-pic" />
+              <span className="profile-name">{profile.name}</span>
+              <button onClick={logOut} className="logout-btn">Log out</button>
+            </div>
+          ) : (
+            <button className="login-btn">Sign in</button>
+          )}
+        </div>
       </div>
     </header>
   );

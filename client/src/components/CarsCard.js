@@ -11,9 +11,9 @@ function CarsCard({ car }) {
     if (user) {
       navigate(`/cars/${car.id}/book`);
     } else {
-      const signUp = window.confirm('You must be logged in to book a car. Would you like to sign up?');
-      if (signUp) {
-        navigate('/signup');
+      const login = window.confirm('You must be logged in to book a car. Would you like to sign up?');
+      if (login) {
+        navigate('/login');
       }
     }
   };
