@@ -20,7 +20,7 @@ function AvailableCars() {
   }
   return (
     <div className="available-cars-section">
-      <h2>Available Cars</h2>
+      <h2>Amazing Offers!!!</h2>
       <div className="car-list">
         {cars.map(car => (
           <CarsCard key={car.id} car={car} />
