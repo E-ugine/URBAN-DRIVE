@@ -57,7 +57,7 @@ function App() {
 
   return (
     <UserProvider>
-      {showModal && <SignupModal login={login} />}
+      {/* {showModal && <SignupModal login={login} />} */}
       <Router>
         <Navbar profile={profile} logOut={logOut} />
         <Routes>

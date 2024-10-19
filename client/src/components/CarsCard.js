@@ -9,14 +9,20 @@ function CarsCard({ car }) {
 
   const handleBookNow = () => {
     if (user) {
+      // Proceed with booking for signed-in users
       navigate(`/cars/${car.id}/book`);
     } else {
-      const login = window.confirm('You must be logged in to book a car. Would you like to sign up?');
-      if (login) {
-        navigate('/login');
+      // Notify user that they can book, but will need to sign in later
+      const proceedWithoutLogin = window.confirm(
+        'You can start booking now, but you will need to sign in or sign up to complete the booking. Do you want to proceed?'
+      );
+      if (proceedWithoutLogin) {
+        // Continue booking process even without login
+        navigate(`/cars/${car.id}/book`);
       }
     }
   };
+  
 
   return (
     <div className="car-card" id={car.id}>
