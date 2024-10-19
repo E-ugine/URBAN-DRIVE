@@ -7,12 +7,11 @@ import About from "./components/About";
 import Cars from "./components/Cars";
 import CarsDetail from "./components/CarsDetail";
 import Services from "./components/Services";
-// import Pricing from "./components/Pricing";
+import BookingForm from "./components/BookingForm";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-// import Login from "./components/Login";  
-// import Signup from "./components/SignUp"; 
+
 
 function App() {
   return (
@@ -23,12 +22,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
-          {/* <Route path="/pricing" element={<Pricing />} /> */}
           <Route path="/cars" element={<Cars />} />
+          <Route path="/booking" element={<BookingForm />} />
           <Route path="/cars/:id" element={<CarsDetail />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* <Route path="/login" element={<Login />} />   
-          <Route path="/signup" element={<Signup />} /> */}
+          <Route path="/contact" element={<Contact />} /> 
         </Routes>
         <Footer />
       </Router>
