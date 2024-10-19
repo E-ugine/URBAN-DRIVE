@@ -60,6 +60,7 @@ textarea.textarea {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 20px;
+  width: 30%;
 }
 
 .payment-info .reserve-btn:hover {
