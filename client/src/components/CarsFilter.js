@@ -1,10 +1,9 @@
-import React from "react";
+import React from 'react';
 
-function CarsFilter(){
-    return(
-        <div>
-
-        </div>
-    )
+function CarsFilter() {
+ return (
+  <div></div>
+ )
 }
+
 export default CarsFilter;

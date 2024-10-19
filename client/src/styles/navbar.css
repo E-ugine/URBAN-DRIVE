@@ -1,67 +1,45 @@
-body{
-    padding: 0%;
-    margin: 0;
-    box-sizing: border-box;
+.navbar {
+  color: #fff;
+  padding: 20px 0;
 }
 
-header{
-    display:flex ;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    gap: 0.5rem;
-    padding: 0 1rem;
-    height: 10vh;
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
 }
 
-header h1 em{
-color: green;
+.logo {
+  font-size: 2em;
 }
 
-header nav ul{
-    display: flex;
+.logo span {
+  color: green;
 }
 
-header nav ul li{
-    list-style: none;
-}
-header nav ul li a{
-    text-decoration: none;
-    padding:  2rem;
-    font-weight: bold;
-    transition: 0.3s ease;
-    color: green;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
 }
 
-header nav ul li a:active,
-header nav ul li a:hover,
-header nav ul li a:focus,
-header nav ul li a.current {
-    color:#1085ff;
+.nav-links li a {
+  color: #1085ff;
+  text-decoration: none;
+  font-size: 1em;
   font-weight: bold;
 }
 
-/*User details*/
+.nav-links li a:hover {
+  color: #f10909;
+}
 
-.user-details {
-    display: flex;  
-    gap: 1rem;  
-    margin-right: 100px;  
-  }
-  
-.user-details button {
-    background-color:green;
-    font-weight: bold;
-    color: white;  
-    margin: 5px 0px;  
-    border-radius: 4px;
-    border: none;
-    text-align: center;  
-    padding: 10px;
-  }
-  
-  .user-details button:hover {
-    background-color: #f5f5f5;
-    color: #1085ff;
-  }
+h1{
+  color: black;
+}
 
+h1 em {
+  color: #1085ff;
+}

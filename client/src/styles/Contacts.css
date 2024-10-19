@@ -1,0 +1,76 @@
+.contact-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Heading styles */
+  .contact-page h2,
+  .contact-page h3 {
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Contact details styles */
+  .contact-details {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #e7f3fe;
+    border-left: 5px solid #2196F3; /* Light blue border */
+  }
+  
+  /* Input styles */
+  .contact-page input[type="text"],
+  .contact-page input[type="email"],
+  .contact-page textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Button styles */
+  .contact-page button {
+    background-color: #2196F3; /* Light blue background */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Button hover effect */
+  .contact-page button:hover {
+    background-color: #1976D2; /* Darker blue on hover */
+  }
+  
+  /* Required field styles */
+  .contact-page input:required,
+  .contact-page textarea:required {
+    border: 1px solid #ff4d4d; /* Red border for required fields */
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .contact-page {
+      padding: 15px;
+    }
+  
+    .contact-page h2,
+    .contact-page h3 {
+      font-size: 1.5em;
+    }
+  
+    .contact-page button {
+      width: 100%;
+    }
+  }
+  

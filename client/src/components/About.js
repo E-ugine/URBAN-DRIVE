@@ -1,14 +1,13 @@
-// About.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import '../styles/About.css'
 
 function About() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleBack = () => {
-    navigate('/');
-  };
+  // const handleBack = () => {
+  //   navigate('/');
+  // };
 
   return (
     <div className="about-container">
@@ -43,7 +42,7 @@ function About() {
         At Urban Drive, we don’t just rent cars – we offer experiences. Whether you want to explore the
         city, impress your clients, or enjoy a weekend getaway, we have the perfect vehicle for every occasion.
       </p>
-      <button onClick={handleBack} className="back-button">Back to Home</button>
+      {/* <button onClick={handleBack} className="back-button">Back to Home</button> */}
     </div>
   );
 }

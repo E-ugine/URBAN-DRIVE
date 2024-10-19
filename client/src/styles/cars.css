@@ -1,0 +1,26 @@
+.cars-page {
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .cars-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+  }
+  
+  .search-bar {
+    margin-bottom: 40px;
+  }
+  
+  .search-bar input {
+    width: 300px;
+    padding: 10px;
+    font-size: 1em;
+  }
+  
+  .car-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
