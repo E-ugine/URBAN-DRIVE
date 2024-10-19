@@ -21,15 +21,15 @@ function Cars() {
       .catch((error) => console.error('Error fetching cars data:', error));
   }, []);
 
-  const handleSearchChange = (event) => {
+  function handleSearchChange(event){
     setSearch(event.target.value);
   };
 
-  const handleMinPriceChange = (event) => {
+  function handleMinPriceChange(event){
     setMinPrice(event.target.value);
   };
 
-  const handleMaxPriceChange = (event) => {
+  function handleMaxPriceChange (event) {
     setMaxPrice(event.target.value);
   };
 
