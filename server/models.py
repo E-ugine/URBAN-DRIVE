@@ -33,22 +33,9 @@ class Car(db.Model):
 
     def __repr__(self):
         return (
-            f'<Car {self.id} {self.type} {self.name} {self.price} '
-            f'{self.status} {self.review}>'
+            f'<Car {self.id} {self.type} {self.name} {self.price} {self.status} {self.review}>'
         )
 
-    def to_dict(self):
-        """Convert car object to dictionary for JSON response."""
-        return {
-            "id": self.id,
-            "type": self.type,
-            "name": self.name,
-            "description": self.description,
-            "price": self.price,
-            "image_url": self.image_url,
-            "status": self.status,
-            "review": self.review,
-        }
 class Booking(db.Model):
     __tablename__ = 'bookings'  
     id = db.Column(db.Integer, primary_key=True)
