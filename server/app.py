@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_restful import Api, Resource
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-from models import db, User, Car, Booking, Payment
+from models import db, User, Car, Booking, Payment, Feature
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -23,6 +23,10 @@ jwt = JWTManager(app)
 api = Api(app)
 
 ### AUTHENTICATION ROUTES ###
+
+@app.route('/')
+def home():
+    return 'Urban Drive API'
 
 class Signup(Resource):
     def post(self):
@@ -192,7 +196,7 @@ class Features(Resource):
     @jwt_required()
     def post(self):
         data = request.get_json()
-        new_feature = Feature(name=data['name'], description=data.get('description'))
+        new_feature = Feature(name=data['name'], description=data.get('description'), average_rating=data.get('average_rating', 0.0))
 
         db.session.add(new_feature)
         db.session.commit()
@@ -207,9 +211,13 @@ class CarFeatures(Resource):
         feature = Feature.query.filter_by(id=data['feature_id']).first_or_404(description="Feature not found")
 
         car.features.append(feature)
+        if 'average_rating' in data:
+            feature.average_rating = data['average_rating']
+
         db.session.commit()
         return make_response(
-            {"message": f"Feature '{feature.name}' added to car {car.make} {car.model}"}, 200
+            {"message": f"Feature '{feature.name}' added to car {car.make} {car.model}", "feature": feature.to_dict()},
+            200
         )
 
 
