@@ -1,0 +1,24 @@
+.welcome-section {
+    padding: 60px 0;
+    /* text-align: center; */
+    display:flex;
+  }
+  
+  .welcome-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-section p {
+    font-size: 1.5em;
+    text-wrap: balance;
+    
+  }
+
+  .welcome-section img{
+    margin-left: 40px;
+    width: 80%;
+    height: 100%;
+    float:left;
+  }
+  

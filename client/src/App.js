@@ -1,41 +1,36 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-// import Login from "./components/Login";
-// import Signup from "./components/SignUp";
-import ProtectedRoute from "./components/ProtectedRoute";
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { UserProvider } from './context/UserContext'; 
 import Home from "./components/Home";
 import About from "./components/About";
+import Cars from "./components/Cars";
+import CarsDetail from "./components/CarsDetail";
+import Services from "./components/Services";
+import BookingForm from "./components/BookingForm";
+import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-function App() {
-  const isSignedUp = localStorage.getItem('isSignedUp');
 
+function App() {
   return (
-    <>
-    <div>
-   <Navbar/>
-   <Home/>
-    </div>
-    <Router>
-      <div>
-      <Routes>
-        <Route path="/" element={isSignedUp ? <Navigate to="/login" /> : <Navigate to="/signup" />} />
-        {/* <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} /> */}
-        <Route path="/about" element={<About/>}/>
-        {/* <Route path="/home" element={<ProtectedRoute component={Home} />} /> */}
-      </Routes>
-      </div>
-     
-    </Router>
-    <div>
-      <Footer/>
-    </div>
-  
-    </>
+    <UserProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/cars" element={<Cars />} />
+          <Route path="/booking" element={<BookingForm />} />
+          <Route path="/cars/:id" element={<CarsDetail />} />
+          <Route path="/contact" element={<Contact />} /> 
+        </Routes>
+        <Footer />
+      </Router>
+    </UserProvider>
   );
- 
 }
 
 export default App;

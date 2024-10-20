@@ -1,50 +1,28 @@
-import React,{useState} from 'react'
+import React from 'react';
 import Hero from './Hero';
-import CarsCard from './CarsCard';
-import CarTypeCard from './CarTypeCard';
-import CarsFilter from './CarsFilter';
-import { useOutletContext } from 'react-router-dom'
+import Services from './Services';
+import AvailableCars from './AvailableCars';
+import '../styles/home.css';
 
 function Home() {
-//   const {cars, handleChange, filters, handleDelete} = useOutletContext();
-// const[type, setType] = useState("");
-// const [currentPage, setCurrentPage] = useState(1);
-// const carsPerPage = 4;
-
-// function handleTypeClick(e){
-//   const selectedType = e.target.getAttribute('type');
-//   if (selectedType === type) {
-//     setType("");
-//   }
-//   else{
-//     setType(selectedType);
-//   }
-// }
-
-// const carType = cars.reduce((acc, car) => {
-//   acc[car.carType] = (acc[car.carType] || 0) + 1;
-//   return acc;
-// }, {});
-// const carTypeCount = Object.entries(carType)
-
-// const filteredCars = cars.filter(car => {
-//   return (
-//     (type? car.carType === type : true) &&
-//     (filters.name ? car.name === filters.name : true)
-//   )
-// })
-
-
   return (
-    <>
-    <Hero/>
-    {/* <CarsFilter filters={filters} handleChange={handleChange} /> */}
-    <div className='car-type-section'>
-    <small><em className='dash'>———</em> Car Types</small>
-    <h2>Available <em>Cars</em></h2>
-    </div>
-    </>
+    <div>
+      <Hero />
       
-  )
+      <div className="welcome-section">
+      <div>
+          <img src='https://plus.unsplash.com/premium_photo-1683121327669-9739544c58e4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='home'/>
+        </div>
+        <p>Welcome to UrbanDrive Your journey starts here. Find the perfect car for your adventure.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum blanditiis esse accusantium dignissimos labore laborum. Veniam, corporis mollitia temporibus, in quaerat vero deleniti amet dolorem repudiandae, pariatur nam dolore! Impedit neque sit ad temporibus quam similique dolor ipsam praesentium sunt.
+        </p>
+      </div>
+      <AvailableCars />
+      <Services />
+     
+      {/* We could add testimonials and some  Blog possibly  */}
+    </div>
+  );
 }
+
 export default Home;

@@ -1,0 +1,31 @@
+.available-cars-section {
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .available-cars-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+    color: green;
+  }
+  
+  .car-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .view-all-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: green;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .view-all-btn:hover {
+    background-color: yellowgreen;
+  }
+  
