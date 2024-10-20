@@ -1,99 +1,39 @@
-#!/usr/bin/env python3
+from app import app, db  # Import your Flask app and db from your app module
+from models import User, Car, Booking, Payment  # Import your models
+from werkzeug.security import generate_password_hash
+from datetime import datetime
 
-from app import app, db
-from models import User, Car, Booking, Payment, Feature
-from flask_bcrypt import generate_password_hash
-from datetime import datetime, timedelta
-
-# Sample data
+# Function to seed the database
 def seed_data():
-    with app.app_context():
-        db.drop_all()
-        db.create_all()
+    # Drop and recreate all tables (use cautiously in production)
+    db.drop_all()
+    db.create_all()
 
-        # Seed Users
-        user1 = User(
-            first_name="Eugine", 
-            last_name="Roy",  
-            email="eugineroy@gmail.com",
-            hashed_password=generate_password_hash("password123").decode('utf-8'),
-            phone_number="1234567890",
-            address="123 Main St, Nairobi",
-            dl_number="DL123456789"
-        )
-        user2 = User(
-            first_name="Frankie",
-            last_name="Onesmus",  
-            email="frankone@gmail.com",
-            hashed_password=generate_password_hash("securepass").decode('utf-8'),
-            phone_number="0987654321",
-            address="456 Elm St, Mombasa",
-            dl_number="DL987654321"
-        )
+    # Seed Users
+    user1 = User(username='john_doe', email='john@example.com', password_hash=generate_password_hash('password123'))
+    user2 = User(username='jane_smith', email='jane@example.com', password_hash=generate_password_hash('password123'))
+    
+    # Seed Cars
+    car1 = Car(make='Toyota Prius', price_per_day=50, status='available', review=4.5)
+    car2 = Car(make='Tesla Model 3', price_per_day=100, status='available', review=4.8)
+    car3 = Car(make='BMW X5', price_per_day=80, status='available', review=4.7)
+    
+    # Seed Bookings
+    booking1 = Booking(user_id=1, car_id=1, start_date=datetime(2024, 10, 20), end_date=datetime(2024, 10, 25), total_cost=250, status='active')
+    booking2 = Booking(user_id=2, car_id=2, start_date=datetime(2024, 10, 15), end_date=datetime(2024, 10, 18), total_cost=300, status='active')
 
-        db.session.add_all([user1, user2])
-        db.session.commit()
+    # Seed Payments
+    payment1 = Payment(booking_id=1, amount_received=250, payment_date=datetime.utcnow(), status='completed')
+    payment2 = Payment(booking_id=2, amount_received=300, payment_date=datetime.utcnow(), status='completed')
 
-        # Seed Cars
-        cars = [
-            Car(make="Mercedes-Benz", model="S-Class", year=2022, price_per_day=200.00, colour="Black", license_plate="KAA123A"),
-            Car(make="BMW", model="7 Series", year=2021, price_per_day=180.00, colour="White", license_plate="KBB456B"),
-        ]
+    # Add all instances to the session
+    db.session.add_all([user1, user2, car1, car2, car3, booking1, booking2, payment1, payment2])
 
-        db.session.add_all(cars)
-        db.session.commit()
+    # Commit the transaction
+    db.session.commit()
 
-        # Seed Features
-        features = [
-            Feature(name="Adaptive Cruise Control", description="Automatically adjusts speed to maintain safe distance from other vehicles."),
-            Feature(name="Premium Sound System", description="High-quality surround sound system for an immersive audio experience."),
-        ]
+    print("Database seeded successfully!")
 
-        db.session.add_all(features)
-        db.session.commit()
-
-        # Associate Features with Cars (Many-to-Many)
-        cars[0].features.extend([features[0], features[1]]) 
-        cars[1].features.append(features[0])  
-        db.session.commit()
-
-        # Seed Bookings
-        booking1 = Booking(
-            customer_id=user1.id, 
-            car_id=cars[0].id,
-            start_date=datetime.now(),
-            end_date=datetime.now() + timedelta(days=3),
-            total_cost=600.00
-        )
-        booking2 = Booking(
-            customer_id=user2.id,
-            car_id=cars[1].id,
-            start_date=datetime.now(),
-            end_date=datetime.now() + timedelta(days=2),
-            total_cost=360.00
-        )
-
-        db.session.add_all([booking1, booking2])
-        db.session.commit()
-
-        # Seed Payments
-        payment1 = Payment(
-            booking_id=booking1.id,
-            total_cost=600.00,
-            payment_date=datetime.now(),
-            status="pending"
-        )
-        payment2 = Payment(
-            booking_id=booking2.id,
-            total_cost=360.00,
-            payment_date=datetime.now(),
-            status="pending"
-        )
-
-        db.session.add_all([payment1, payment2])
-        db.session.commit()
-
-        print("Database seeded successfully!")
-
-if __name__ == '__main__':
-    seed_data()
+if __name__ == "__main__":
+    with app.app_context():  # Ensure we're running inside an application context
+        seed_data()
