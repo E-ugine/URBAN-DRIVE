@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_restful import Api, Resource
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-from models import db, User, Car, Booking, Payment
+from models import db, User, Car, Booking, Payment, Feature
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -184,7 +184,7 @@ api.add_resource(Payments, '/payments')
 
 
 ## FEATURES RESOURCE 
-class Features(Resource):
+class Feature(Resource):
     def get(self):
         features = [feature.to_dict() for feature in Feature.query.all()]
         return make_response(jsonify(features), 200)
@@ -213,7 +213,7 @@ class CarFeatures(Resource):
         )
 
 
-api.add_resource(Features, '/features')
+api.add_resource(Feature, '/features')
 api.add_resource(CarFeatures, '/cars/<int:car_id>/features')
 
 

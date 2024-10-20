@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+from random import choice as rc
 from app import app, db
 from models import User, Car, Booking, Payment, Feature
 from flask_bcrypt import generate_password_hash
