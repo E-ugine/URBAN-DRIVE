@@ -1,7 +1,7 @@
-/* home.css */
 .welcome-section {
     padding: 60px 0;
-    text-align: center;
+    /* text-align: center; */
+    display:flex;
   }
   
   .welcome-section h2 {
@@ -10,6 +10,15 @@
   }
   
   .welcome-section p {
-    font-size: 1.2em;
+    font-size: 1.5em;
+    text-wrap: balance;
+    
+  }
+
+  .welcome-section img{
+    margin-left: 40px;
+    width: 80%;
+    height: 100%;
+    float:left;
   }
   

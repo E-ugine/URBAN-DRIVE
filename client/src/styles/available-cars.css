@@ -1,12 +1,12 @@
-/* available-cars.css */
 .available-cars-section {
     padding: 60px 0;
     text-align: center;
   }
   
   .available-cars-section h2 {
-    font-size: 2.5em;
+    font-size: 1.5em;
     margin-bottom: 40px;
+    color: green;
   }
   
   .car-list {
@@ -19,13 +19,13 @@
     display: inline-block;
     margin-top: 30px;
     padding: 10px 20px;
-    background-color: #f10909;
+    background-color: green;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
   }
   
   .view-all-btn:hover {
-    background-color: #c10808;
+    background-color: yellowgreen;
   }
   

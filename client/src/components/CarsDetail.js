@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/car-details.css';
 
 function CarsDetail() {
   const { id } = useParams();
-  const [car, setCar] = useState(null);
+  const [car, setCar] = React.useState(null);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetch(`http://localhost:3001/cars/${id}`)
       .then((response) => response.json())
       .then((data) => {
@@ -21,9 +21,11 @@ function CarsDetail() {
   if (loading) {
     return <p>Loading car details...</p>;
   }
+
   if (!car) {
     return <p>No car details available.</p>;
   }
+
   return (
     <div className="car-details">
       <button onClick={() => navigate(-1)} className="back-btn">&larr; Back</button>
@@ -33,7 +35,10 @@ function CarsDetail() {
           <h2>{car.name}</h2>
           <h3>${car.price.toLocaleString()} / day</h3>
           <p>{car.description}</p>
-          <button className="btn book-now">Book Now</button>
+          <button 
+  className="btn book-now" 
+  onClick={() => navigate('/booking', { state: { carImage: car.image_url, carName: car.name, carPrice: car.price } })}>Book Now</button>
+
         </div>
       </div>
     </div>

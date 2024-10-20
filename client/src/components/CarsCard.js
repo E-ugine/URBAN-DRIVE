@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import '../styles/card.css';
 
 function CarsCard({ car }) {
+  const navigate = useNavigate();
+  
   return (
     <div className="car-card" id={car.id}>
       <div className="car-card-img-container">
@@ -17,7 +20,6 @@ function CarsCard({ car }) {
         )}
         <div className="car-card-tags">
           <small>{car.status}</small>
-          {/* <small>{car.type}</small> */}
         </div>
       </div>
       <div className="car-card-content">
@@ -28,7 +30,9 @@ function CarsCard({ car }) {
         </div>
         <div className="car-card-actions">
           <Link to={`/cars/${car.id}`} className="btn details">Details</Link>
-          <button className="btn book-now">Book now</button>
+          <button className="btn book-now" onClick={() => navigate('/booking')}>
+            Book Now
+          </button>
         </div>
       </div>
     </div>

@@ -1,0 +1,82 @@
+.booking-container {
+  display: flex;
+  gap: 50px;
+  padding: 40px 0;
+}
+
+.car-image-section {
+  flex: 1;
+  text-align: center;
+}
+
+.car-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.booking-info, .payment-info {
+  flex: 1;
+  max-width: 45%;
+}
+
+.booking-info h3, .payment-info h3 {
+  font-size: 1.5rem;
+  color: #03127c;
+  margin-bottom: 20px;
+}
+
+.booking__form input, 
+.booking__form select, 
+.textarea {
+  padding: 10px;
+  border: 1px solid #d1d1d1;
+  width: 100%;
+  border-radius: 4px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+textarea.textarea {
+  width: 100%;
+  resize: none;
+}
+
+.booking__form select, .textarea {
+  width: 100%;
+}
+
+.payment-info .payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.payment-info .reserve-btn {
+  background-color: #03127c;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 30%;
+}
+
+.payment-info .reserve-btn:hover {
+  background-color: #28a745;
+}
+
+@media screen and (max-width: 992px) {
+  .booking-container {
+    flex-direction: column;
+  }
+
+  .booking__form {
+    width: 100%;
+  }
+
+  .car-img {
+    max-width: 100%;
+  }
+}

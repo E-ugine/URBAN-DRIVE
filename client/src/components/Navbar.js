@@ -1,4 +1,3 @@
-// Navbar.js
 import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/navbar.css';
@@ -15,7 +14,8 @@ function Navbar() {
             <li><Link to="/">Home</Link></li> 
             <li><Link to="/about">About</Link></li> 
             <li><Link to="/services">Services</Link></li>
-            <li><Link to="/pricing">Pricing</Link></li> 
+            <li><Link to="/bookings">Bookings</Link></li>
+            {/* <li><Link to="/pricing">Pricing</Link></li>  */}
             <li><Link to="/cars">Cars</Link></li> 
             <li><Link to="/contact">Contact</Link></li>
           </ul>
