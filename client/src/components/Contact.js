@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import '../styles/Contacts.css';
+import '../styles/Contact.css';
 
 function Contacts() {
   // State to handle form input
@@ -18,12 +17,15 @@ function Contacts() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form Data Submitted:', formData);
-    // You can add form submission logic here, such as sending data to an API
+    // Add form submission logic here, like sending data to an API
   };
 
   return (
     <div className="contact-page">
-      <h2>Contact Us</h2>
+      <div className="contact-header">
+        <h2>Get in Touch</h2>
+        <p>We'd love to hear from you! Fill out the form below to send us a message.</p>
+      </div>
       
       <div className="contact-details">
         <p><strong>Email:</strong> contact@urbandrive.com</p>
@@ -31,10 +33,8 @@ function Contacts() {
         <p><strong>Address:</strong> 123 Urban Drive, City, Country</p>
       </div>
 
-      <h3>Send us a message</h3>
-      
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} className="contact-form">
+        <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input 
             type="text" 
@@ -42,11 +42,12 @@ function Contacts() {
             name="name" 
             value={formData.name} 
             onChange={handleChange} 
+            placeholder="Enter your name"
             required 
           />
         </div>
 
-        <div>
+        <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input 
             type="email" 
@@ -54,25 +55,27 @@ function Contacts() {
             name="email" 
             value={formData.email} 
             onChange={handleChange} 
+            placeholder="Enter your email"
             required 
           />
         </div>
 
-        <div>
+        <div className="form-group">
           <label htmlFor="message">Message:</label>
           <textarea 
             id="message" 
             name="message" 
             value={formData.message} 
             onChange={handleChange} 
+            placeholder="Write your message here"
             required 
           />
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" className="submit-button">Send Message</button>
       </form>
     </div>
   );
-};
+}
 
 export default Contacts;
