@@ -1,8 +1,8 @@
-"""Initial migration
+"""initial migration
 
-Revision ID: c1a2cca9f393
+Revision ID: 3afc712b9368
 Revises: 
-Create Date: 2024-10-17 14:44:48.638161
+Create Date: 2024-10-20 15:06:45.624562
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'c1a2cca9f393'
+revision = '3afc712b9368'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,41 +21,35 @@ def upgrade():
     op.create_table('cars',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('make', sa.String(), nullable=False),
-    sa.Column('model', sa.String(), nullable=False),
-    sa.Column('year', sa.Integer(), nullable=True),
-    sa.Column('colour', sa.String(), nullable=True),
-    sa.Column('license_plate', sa.String(), nullable=True),
+    sa.Column('price_per_day', sa.Float(), nullable=False),
     sa.Column('status', sa.String(), nullable=True),
-    sa.Column('price_per_day', sa.Float(), nullable=True),
+    sa.Column('review', sa.Float(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('first_name', sa.String(), nullable=False),
-    sa.Column('last_name', sa.String(), nullable=False),
-    sa.Column('email', sa.String(), nullable=True),
-    sa.Column('hashed_password', sa.String(), nullable=True),
-    sa.Column('phone_number', sa.String(), nullable=True),
-    sa.Column('address', sa.String(), nullable=True),
-    sa.Column('dl_number', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.Column('username', sa.String(), nullable=False),
+    sa.Column('email', sa.String(), nullable=False),
+    sa.Column('password_hash', sa.String(), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email')
     )
     op.create_table('bookings',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('customer_id', sa.Integer(), nullable=True),
-    sa.Column('car_id', sa.Integer(), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('car_id', sa.Integer(), nullable=False),
     sa.Column('start_date', sa.DateTime(), nullable=False),
     sa.Column('end_date', sa.DateTime(), nullable=False),
-    sa.Column('total_cost', sa.Float(), nullable=True),
+    sa.Column('total_cost', sa.Float(), nullable=False),
     sa.Column('status', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['car_id'], ['cars.id'], ),
-    sa.ForeignKeyConstraint(['customer_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('payments',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('booking_id', sa.Integer(), nullable=True),
-    sa.Column('total_cost', sa.Float(), nullable=True),
+    sa.Column('booking_id', sa.Integer(), nullable=False),
+    sa.Column('amount_received', sa.Float(), nullable=False),
     sa.Column('payment_date', sa.DateTime(), nullable=False),
     sa.Column('status', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['booking_id'], ['bookings.id'], ),
