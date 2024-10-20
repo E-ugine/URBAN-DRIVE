@@ -63,7 +63,7 @@ class Users(Resource):
 class Cars(Resource):
     @jwt_required()
     def get(self, id=None):
-        if id:  # Get a specific car by ID
+        if id: #get by id
             car = Car.query.get(id)
             if car is None:
                 return jsonify({"error": "Car not found"}), 404
