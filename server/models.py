@@ -18,18 +18,37 @@ class User(db.Model):
 
 class Car(db.Model): 
     __tablename__ = 'cars'  
-    id = db.Column(db.Integer, primary_key=True)
-    make = db.Column(db.String, nullable=False)
-    price_per_day = db.Column(db.Float, nullable=False)  
-    status = db.Column(db.String, default="available")
-    review = db.Column(db.Float, nullable=False)
 
-    # Relationship: One Car has many Bookings#
+    id = db.Column(db.Integer, primary_key=True)
+    type = db.Column(db.String, nullable=False)
+    name = db.Column(db.String, nullable=False)
+    description = db.Column(db.String, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    image_url = db.Column(db.String, nullable=False)
+    status = db.Column(db.String, default="available")
+    review = db.Column(db.Float, nullable=False, default=0.0)
+
+    # Relationship: One Car has many Bookings
     bookings = db.relationship('Booking', backref='car', lazy=True)
 
     def __repr__(self):
-        return f'<Car {self.id} {self.make} {self.price_per_day} {self.status} {self.review}>'
+        return (
+            f'<Car {self.id} {self.type} {self.name} {self.price} '
+            f'{self.status} {self.review}>'
+        )
 
+    def to_dict(self):
+        """Convert car object to dictionary for JSON response."""
+        return {
+            "id": self.id,
+            "type": self.type,
+            "name": self.name,
+            "description": self.description,
+            "price": self.price,
+            "image_url": self.image_url,
+            "status": self.status,
+            "review": self.review,
+        }
 class Booking(db.Model):
     __tablename__ = 'bookings'  
     id = db.Column(db.Integer, primary_key=True)
