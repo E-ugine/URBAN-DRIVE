@@ -1,12 +1,7 @@
 .navbar {
-  background-color: silver;
+  background-color: silver; 
   padding: 20px 0;
-  width: 100%; 
-   /* position: fixed;  */
-  /* top: -30px; 
-  z-index: 1000;
- 
-  transition: top 0.3s;  */
+  width: 100%;
 }
 
 .navbar-container {
@@ -19,10 +14,11 @@
 
 .logo {
   font-size: 2em;
+  color: grey; /* Logo color */
 }
 
 .logo span {
-  color: green;
+  color: green; /* Color for any span inside the logo */
 }
 
 .nav-links {
@@ -32,21 +28,21 @@
 }
 
 .nav-links li a {
-  color: #1085ff;
-  text-decoration: none;
+  color: grey; /* Change link color to grey */
+  text-decoration: wavy;
   font-size: 1.3em;
   font-weight: bold;
   margin-right: 90px;
 }
 
 .nav-links li a:hover {
-  color: green;
+  color: green; /* Color when hovered */
 }
 
-h1{
-  color: black;
+h1 {
+  color: black; /* Title color */
 }
 
 h1 em {
-  color: #1085ff;
+  color: #1085ff; /* Emphasized text color */
 }
