@@ -1,9 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import '../styles/cart.css';
 
 function Cart() {
   const { cart, removeFromCart, clearCart } = useContext(CartContext);
+  const [days, setDays] = useState(1); // State to store the number of rental days
+  const navigate = useNavigate();
+
+  const handleProceedToPay = () => {
+    if (cart.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
+    // Navigate to rental details page, passing the cart and the rental days
+    navigate('/rental-details', { state: { cart, days } });
+  };
 
   return (
     <div className="cart-page">
@@ -17,16 +29,28 @@ function Cart() {
               <img src={car.image_url} alt={car.name} />
               <h3>{car.name}</h3>
               <p>${car.price} / day</p>
-              {/* Pass the car name to removeFromCart */}
               <button onClick={() => removeFromCart(car.name)}>Remove</button>
             </div>
           ))}
         </div>
       )}
       {cart.length > 0 && (
-        <button className="clear-cart" onClick={clearCart}>
-          Clear Cart
-        </button>
+        <>
+          <label htmlFor="days">Number of days:</label>
+          <input
+            id="days"
+            type="number"
+            value={days}
+            onChange={(e) => setDays(e.target.value)}
+            min="1"
+          />
+          <button className="clear-cart" onClick={clearCart}>
+            Clear Cart
+          </button>
+          <button className="proceed-btn" onClick={handleProceedToPay}>
+            Proceed to Pay
+          </button>
+        </>
       )}
     </div>
   );
