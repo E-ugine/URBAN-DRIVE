@@ -49,6 +49,13 @@ def seed_data():
             image_url='https://unsplash.com/photos/a-large-black-truck-parked-in-a-parking-lot-J873IhXuJhE', status='available', review=4.4)
     ]
 
+    db.session.add_all(users)  # Add users first
+    db.session.commit()         # Commit to get user IDs
+
+    db.session.add_all(cars)    # Add cars
+    db.session.commit()          # Commit to get car IDs
+
+
     # Seed Bookings (Random users and cars, valid date ranges, and different statuses)
     bookings = []
     for _ in range(5):
@@ -68,6 +75,9 @@ def seed_data():
         )
         bookings.append(booking)
 
+    db.session.add_all(bookings)
+    db.session.commit()  # Commit to ensure booking IDs are set
+
     # Seed Payments (Match with some of the bookings)
     payments = []
     for booking in bookings:
@@ -81,7 +91,7 @@ def seed_data():
             payments.append(payment)
 
 
-    db.session.add_all(users + cars + bookings + payments)
+    db.session.add_all(payments)
     db.session.commit()
 
     print("Database seeded successfully!")
