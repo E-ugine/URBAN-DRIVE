@@ -9,9 +9,10 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) => [...prevCart, car]);
   };
 
-  const removeFromCart = (carId) => {
-    setCart((prevCart) => prevCart.filter((car) => car.id !== carId));
+  const removeFromCart = (carName) => {
+    setCart((prevCart) => prevCart.filter((car) => car.name !== carName));
   };
+  
 
   const clearCart = () => {
     setCart([]);
