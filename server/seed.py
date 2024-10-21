@@ -4,13 +4,10 @@ from werkzeug.security import generate_password_hash
 from datetime import datetime, timedelta
 import random
 
-# Helper function to generate random date ranges for bookings
 def random_date_range():
     start_date = datetime.now() + timedelta(days=random.randint(1, 10))
     end_date = start_date + timedelta(days=random.randint(1, 7))
     return start_date, end_date
-
-# Seed function to populate the database
 def seed_data():
     db.drop_all()
     db.create_all()
@@ -25,7 +22,6 @@ def seed_data():
         User(username='diana_love', email='diana@gmail.com', password_hash=generate_password_hash('the100adventures'))
     ]
 
-    # Seed Cars (10 cars with all fields populated)
     cars = [
         Car(type='Sedan', name='Toyota Camry', description='Comfortable and efficient', price=55.0,
             image_url='https://unsplash.com/photos/green-mercedes-benz-coupe-on-road-during-daytime-q1bBfWG1G1E', status='available', review=4.2),
@@ -49,14 +45,13 @@ def seed_data():
             image_url='https://unsplash.com/photos/a-large-black-truck-parked-in-a-parking-lot-J873IhXuJhE', status='available', review=4.4)
     ]
 
-    db.session.add_all(users)  # Add users first
-    db.session.commit()         # Commit to get user IDs
+    db.session.add_all(users)  
+    db.session.commit()         
 
-    db.session.add_all(cars)    # Add cars
-    db.session.commit()          # Commit to get car IDs
+    db.session.add_all(cars)   
+    db.session.commit()         
 
 
-    # Seed Bookings (Random users and cars, valid date ranges, and different statuses)
     bookings = []
     for _ in range(5):
         user = random.choice(users)
@@ -76,9 +71,8 @@ def seed_data():
         bookings.append(booking)
 
     db.session.add_all(bookings)
-    db.session.commit()  # Commit to ensure booking IDs are set
+    db.session.commit()  
 
-    # Seed Payments (Match with some of the bookings)
     payments = []
     for booking in bookings:
         if booking.status == 'complete':
