@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import debounce from 'lodash/debounce';
 
 const YourComponent = ({ callback, debounceTime = 300 }) => {
-  const ref = useRef(null); // Reference for the element being observed
+  const ref = useRef(null); 
   const [elementSize, setElementSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
