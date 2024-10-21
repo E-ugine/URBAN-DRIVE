@@ -18,12 +18,12 @@ def seed_data():
 
     # Seed Users
     users = [
-        User(username='john_doe', email='john@example.com', password_hash=generate_password_hash('password123')),
-        User(username='jane_smith', email='jane@example.com', password_hash=generate_password_hash('password123')),
-        User(username='alice_wonder', email='alice@example.com', password_hash=generate_password_hash('password123')),
-        User(username='bob_builder', email='bob@example.com', password_hash=generate_password_hash('password123')),
-        User(username='charlie_brown', email='charlie@example.com', password_hash=generate_password_hash('password123')),
-        User(username='diana_prince', email='diana@example.com', password_hash=generate_password_hash('password123'))
+        User(username='simba_mufasa', email='simba@gmail.com', password_hash=generate_password_hash('minicraft1')),
+        User(username='ray_reddington', email='ray@gmail.com', password_hash=generate_password_hash('silentnait4')),
+        User(username='leo_messi', email='leo@gmail.com', password_hash=generate_password_hash('secureME')),
+        User(username='bob_boyka', email='bob@gmail.com', password_hash=generate_password_hash('pickinit@1')),
+        User(username='charlie_white', email='charlie@gmail.com', password_hash=generate_password_hash('blacklistssn4')),
+        User(username='diana_love', email='diana@gmail.com', password_hash=generate_password_hash('the100adventures'))
     ]
 
     # Seed Cars (10 cars with all fields populated)
