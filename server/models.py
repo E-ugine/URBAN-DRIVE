@@ -44,7 +44,7 @@ class Car(db.Model, SerializerMixin):
 
     __table_args__ = (
         CheckConstraint('price > 0', name='check_positive_price'),
-        CheckConstraint('status IN ("available", "unavailable")', name='check_valid_status'),
+        CheckConstraint("status IN ('available', 'unavailable')", name='check_valid_status'),
         CheckConstraint('0.0 <= review <= 5.0', name='check_valid_review'),
     )
 
@@ -73,7 +73,7 @@ class Booking(db.Model, SerializerMixin):
     payment = db.relationship('Payment', backref='booking', uselist=False, lazy=True)
 
     __table_args__ = (
-        CheckConstraint('total_cost > 0', name='check_positive_cost')
+        CheckConstraint('total_cost > 0', name='check_positive_cost'),
     )
 
     @validates('end_date')
@@ -103,7 +103,7 @@ class Payment(db.Model, SerializerMixin):
 
     __table_args__ = (
         CheckConstraint('amount_received >= 0', name='check_positive_received'),
-        CheckConstraint('status IN ("pending", "complete")', name='check_payment_status')
+        CheckConstraint("status IN ('pending', 'complete', 'failed')", name='check_payment_status'),
     )
 
     def __repr__(self):
