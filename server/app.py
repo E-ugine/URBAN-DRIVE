@@ -7,7 +7,7 @@ from flask_restful import Api, Resource
 from models import db, Car, User, Booking
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
-
+from flask_cors import CORS
 # Initialize Flask app
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///urban_drive.db'
@@ -21,6 +21,7 @@ migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 api = Api(app)
+CORS(app, resources={r"/*":{"origin":"http://127.0.0.1:4000"}})
 
 @app.route('/')
 def home():
@@ -106,7 +107,7 @@ class Cars(Resource):
 
 ### BOOKINGS RESOURCE ###
 class Bookings(Resource):
-    @jwt_required()
+    # @jwt_required()
     def get(self, id=None):
         current_user_id = get_jwt_identity()
         if id:  # Get a specific booking by ID
