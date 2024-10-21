@@ -35,19 +35,21 @@ function Cart() {
       )}
       {cart.length > 0 && (
         <>
-          <label htmlFor="days">Number of days:</label>
-          <input
-            id="days"
-            type="number"
-            value={days}
-            onChange={(e) => setDays(e.target.value)}
-            min="1"
-          />
+          <div className="rental-days">
+            <label htmlFor="days">Number of days:</label>
+            <input
+              id="days"
+              type="number"
+              value={days}
+              onChange={(e) => setDays(Math.max(1, e.target.value))} 
+              min="1"
+            />
+          </div>
           <button className="clear-cart" onClick={clearCart}>
             Clear Cart
           </button>
           <button className="proceed-btn" onClick={handleProceedToPay}>
-            Proceed to Pay
+            Proceed to Payment
           </button>
         </>
       )}
