@@ -1,15 +1,31 @@
-import React from "react";
-import { useLocation } from "react-router-dom"; 
+import React, { useContext } from "react";
+import { useLocation } from "react-router-dom";
+import { CartContext } from "../context/CartContext"; 
 import '../styles/booking-form.css';
 import { Form, FormGroup } from "reactstrap";
 
 function BookingForm() {
   const { state } = useLocation(); 
   const { carImage, carName, carPrice } = state || {};
-  console.log(carImage, carName, carPrice); 
+  const { cart, addToCart } = useContext(CartContext); 
 
   const submitHandler = (event) => {
     event.preventDefault();
+
+    
+    if (cart.length >= 3) {
+      alert("You cannot add more than 3 cars to your cart.");
+      return;
+    }
+
+    const carExists = cart.some((car) => car.name === carName);
+    if (carExists) {
+      alert(`${carName} is already in your cart!`);
+    } else {
+      const car = { image_url: carImage, name: carName, price: carPrice };
+      addToCart(car);
+      alert(`${carName} has been added to your cart!`);
+    }
   };
 
   return (
@@ -67,10 +83,9 @@ function BookingForm() {
           <FormGroup>
             <textarea rows={5} type="textarea" className="textarea" placeholder="Write"></textarea>
           </FormGroup>
+          <button className="reserve-btn" type="submit">Reserve Now</button>
         </Form>
       </div>
-
-      {/* Payment section */}
       <div className="payment-info">
         <h3>Payment Information</h3>
         <div className="payment-options">
@@ -94,7 +109,6 @@ function BookingForm() {
               <input type="radio" name="payment" /> Paypal
             </label>
           </FormGroup>
-          <button className="reserve-btn">Reserve Now</button>
         </div>
       </div>
     </div>
