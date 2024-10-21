@@ -1,0 +1,110 @@
+/* General page layout */
+.about-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #000; /* Black background for the container */
+  font-family: 'Roboto', sans-serif;
+  color: #fff; /* White text for contrast */
+}
+
+/* Image section on the left */
+.about-image {
+  flex: 1;
+  background-image: url('https://i.pinimg.com/736x/9d/71/ba/9d71bae68dbfa0edcfba07a9a9a3729e.jpg'); /* Your cool image */
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Full viewport height for the image */
+  border-radius: 0 8px 8px 0; /* Slight rounding on the right edge */
+}
+
+/* About content section on the right */
+.about-content {
+  flex: 2; /* Takes up twice the space of the image section */
+  padding: 60px 20px;
+  background-color: #1a1a1a; /* Dark gray background for the content */
+}
+
+/* Heading styles */
+.about-content h2 {
+  font-size: 2.5rem;
+  color: #3498db; /* Bright blue for headings */
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin: 20px 0;
+  color: #e0e0e0; /* Light gray for body text */
+  text-align: justify;
+}
+
+/* Highlight section */
+.highlight-section {
+  background-color: #2a2a2a; /* Dark gray for background highlights */
+  padding: 40px;
+  border-radius: 8px;
+  margin: 40px 0;
+}
+
+.highlight-section h3 {
+  font-size: 1.8rem;
+  color: #3498db; /* Bright blue for section headers */
+  margin-bottom: 15px;
+}
+
+.highlight-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.highlight-section ul li {
+  font-size: 1.2rem;
+  padding: 10px 0;
+  border-bottom: 1px solid #444; /* Darker border for list items */
+  color: #e0e0e0; /* Light gray for list item text */
+}
+
+/* Experience section */
+.experience-section {
+  background-color: #1a1a1a; /* Same as about-content */
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.experience-section h3 {
+  font-size: 1.8rem;
+  color: #ff6347; /* Optional: Keep a contrasting color for emphasis */
+  margin-bottom: 15px;
+}
+
+/* Call to action */
+.call-to-action {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #000; /* Black background */
+  color: #fff; /* White text */
+}
+
+.call-to-action h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #3498db; /* Blue heading */
+}
+
+.cta-button {
+  padding: 15px 40px;
+  background-color: #3498db; /* Blue button */
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+  

@@ -1,95 +1,93 @@
 import React, { useState } from 'react';
-import '../styles/SignUp.css'; 
+import '../styles/SignUp.css';
 
-const SignUp = () => {
-  console.log("SignUp page loaded"); 
+const SignUpPage = ({ onSignUp }) => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    username: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    confirmPassword: ''
   });
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform validation, then submit form
-    if (formData.password === formData.confirmPassword) {
-      console.log('User Registered', formData);
-      // API call or navigation logic here
-    } else {
+    if (formData.password !== formData.confirmPassword) {
       alert("Passwords don't match!");
+      return;
     }
+    
+    // Call onSignUp with the username
+    onSignUp(formData.username);
+    console.log("Form submitted", formData);
+    
+    // Optionally, reset the form after submission
+    setFormData({
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    });
   };
 
   return (
     <div className="signup-container">
-      <form className="signup-form" onSubmit={handleSubmit}>
-        <h1>Urban-Drive Sign Up</h1>
-        
-        <div className="input-group">
-          <label htmlFor="fullName">Full Name</label>
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        
-        <div className="input-group">
-          <label htmlFor="email">Email Address</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="input-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="input-group">
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <button type="submit" className="signup-btn">Sign Up</button>
-        
+      <div className="form-box">
+        <h2>Join Urban Drive</h2>
+        <p className="tagline">Drive into the future with ease</p>
+        <form onSubmit={handleSubmit}>
+          <div className="input-wrapper">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-wrapper">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-wrapper">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-wrapper">
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="submit-btn">Sign Up</button>
+        </form>
         <p className="login-redirect">
-          Already have an account? <a href="/login">Log In</a>
+          Already have an account? <a href="#">Log in</a>
         </p>
-      </form>
+      </div>
     </div>
   );
 };
 
-export default SignUp;
+export default SignUpPage;

@@ -6,7 +6,7 @@
         "name": "Toyota Corolla",
         "description": "A compact and fuel-efficient car ideal for city driving.",
         "price": 3000,
-        "image_url": "https://i.pinimg.com/736x/7c/52/38/7c52389c66d3f0c66f92e3b202d2805b.jpg"
+        "image_url": "https://i.pinimg.com/564x/29/6b/4a/296b4aeca572b1786148a7bf26e4ec01.jpg"
       },
       {
         "id": 2,
@@ -14,7 +14,7 @@
         "name": "Honda CR-V",
         "description": "A spacious and versatile SUV with advanced safety features.",
         "price": 8000,
-        "image_url":"https://i.pinimg.com/564x/d6/f2/e0/d6f2e0fff2229f0cbb2299b413642c06.jpg"
+        "image_url":"https://i.pinimg.com/564x/9e/0c/18/9e0c18939b5ca29d0a71ee099aea251c.jpg"
       },
       {
         "id": 3,
@@ -22,7 +22,7 @@
         "name": "Mercedes-Benz E-Class",
         "description": "A luxurious sedan offering top-tier comfort and performance.",
         "price": 15000,
-        "image_url":"https://i.pinimg.com/564x/25/d0/00/25d00077611b8a559aa9e504873a3d50.jpg"
+        "image_url":"https://i.pinimg.com/564x/1f/18/03/1f1803dc697b9f76d42b50b3fd1a4633.jpg"
       },
       {
         "id": 4,
@@ -30,7 +30,7 @@
         "name": "Ford F-150",
         "description": "A powerful truck suitable for heavy-duty hauling and off-road capability.",
         "price": 9000,
-        "image_url":"https://i.pinimg.com/564x/9c/f7/46/9cf74606177769eaa72b6b76e7838be5.jpg"
+        "image_url":"https://i.pinimg.com/564x/0f/7d/73/0f7d739a344bef652089d9502c4f6130.jpg"
       },
       {
         "id": 5,
@@ -38,7 +38,7 @@
         "name": "Range Rover Evoque Convertible",
         "description": "A stylish and sporty convertible for a fun, open-air driving experience.",
         "price": 20000,
-        "image_url":"https://i.pinimg.com/564x/05/4b/89/054b89ffb0fdab126c435aad4fd43ce5.jpg"
+        "image_url":"https://i.pinimg.com/564x/0a/fe/4f/0afe4fb96016aac55236542ed5d25106.jpg"
       },
       {
         "id": 6,
@@ -63,7 +63,7 @@
         "name": "Tesla Model 3",
         "description": "An electric vehicle with cutting-edge technology and impressive range.",
         "price": 13000,
-        "image_url":"https://i.pinimg.com/enabled_lo/564x/bf/01/cf/bf01cf4f298c3284e3efcd33c2e251f5.jpg"
+        "image_url":"https://i.pinimg.com/564x/a2/66/23/a2662352bc7fd752f5e52aaa16375141.jpg"
       },
       {
         "id": 9,
@@ -71,7 +71,7 @@
         "name": "Toyota Prius",
         "description": "An eco-friendly hybrid car with excellent fuel efficiency.",
         "price": 7000,
-        "image_url":"https://i.pinimg.com/564x/2d/54/af/2d54afc6ddf315093b8f4b85788c01b1.jpg"
+        "image_url":"https://i.pinimg.com/564x/fa/e9/63/fae963b9214f18edf9be528f3e3d0d57.jpg"
       },
       {
         "id": 10,
@@ -79,7 +79,7 @@
         "name": "Porsche 911",
         "description": "A high-performance sports car offering exceptional speed and handling.",
         "price": 8000,
-        "image_url":"https://i.pinimg.com/enabled_lo/564x/07/8f/b6/078fb61e97491766a8e5eac61a1f5b9b.jpg"
+        "image_url":"https://i.pinimg.com/736x/81/f8/15/81f815905833486002d4b4d3c244ab23.jpg"
       }
     ]
   }

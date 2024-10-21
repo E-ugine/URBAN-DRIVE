@@ -1,67 +1,46 @@
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
-import OurMembers from "../components/OurMembers";
-import Helmet from "./Helmet";
-import "../styles/about.css";
+import { useNavigate } from "react-router-dom";
+import '../styles/About.css'
 
 const About = () => {
   return (
-   <Helmet title="About">
-      <section className="about__page-section">
-        <Container>
-          <Row>
-            <Col lg="6" md="6" sm="12">
-            </Col>
+    <div className="about-container">
+      {/* Image section */}
+      <div className="about-image">
+        {/* Image will be set via CSS */}
+      </div>
 
-            <Col lg="6" md="6" sm="12">
-              <div className="about__page-content">
-                <h2 className="section__title">
-                  We Are Committed To Provide Safe Ride Solutions
-                </h2>
+      <section className="about-content">
+        <h2>Drive the Extraordinary</h2>
+        <p>
+          Urban Drive is a premium car rental service designed for those who seek comfort, luxury, and efficiency on the go. Whether you're traveling for business, pleasure, or simply want to make a statement on the road, we provide a curated selection of high-end vehicles tailored to your needs.
+        </p>
+        
+        <h3>Our Fleet</h3>
+        <p>
+          Our fleet includes the latest models of luxury sedans, sports cars, SUVs, and electric vehicles, ensuring a seamless driving experience. Each vehicle is maintained to the highest standards, ensuring performance, safety, and comfort at every turn.
+        </p>
+        
+        <div className="highlight-section">
+          <h3>What Sets Us Apart?</h3>
+          <ul>
+            <li>24/7 Customer Support & Assistance</li>
+            <li>Flexible booking options with transparent pricing</li>
+            <li>Pickup and drop-off services at multiple locations</li>
+            <li>Eco-friendly options with electric cars</li>
+            <li>Exclusive membership perks and discounts</li>
+          </ul>
+        </div>
 
-                <p className="section__description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet veniam assumenda aperiam accusantium ex autem
-                  perferendis repellendus nostrum delectus. Nemo et dolore est
-                  tempore rem minima adipisci magni dolorum ipsam.
-                </p>
-
-                <p className="section__description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet veniam assumenda aperiam accusantium ex autem
-                  perferendis repellendus nostrum delectus. Nemo et dolore est
-                  tempore rem minima adipisci magni dolorum ipsam.
-                </p>
-
-                <div className=" d-flex align-items-center gap-3 mt-4">
-                  <span className="fs-4">
-                    <i class="ri-phone-line"></i>
-                  </span>
-
-                  <div>
-                    <h6 className="section__subtitle">Need Any Help?</h6>
-                    <h4>+254723456789</h4>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+        <div className="experience-section">
+          <h3>We Don’t Just Rent Cars – We Offer Experiences</h3>
+          <p>
+            Whether you want to explore the city, impress your clients, or enjoy a weekend getaway, we have the perfect vehicle for every occasion. At Urban Drive, we transform your journey into an unforgettable experience.
+          </p>
+        </div>
       </section>
-      <section>
-        <Container>
-          <Row>
-            <Col lg="12" className="mb-5 text-center">
-              <h6 className="section__subtitle">Experts</h6>
-              <h2 className="section__title">Our Members</h2>
-            </Col>
-            <OurMembers />
-          </Row>
-        </Container>
-      </section>
-    </Helmet>
-    
+    </div>
   );
 };
 
-export default About;
+export default About

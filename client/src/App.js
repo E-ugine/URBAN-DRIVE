@@ -12,27 +12,24 @@ import BookingForm from "./components/BookingForm";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
-
+import SignUpPage from "./components/SignUp"; 
 
 function App() {
   return (
-    <UserProvider>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/signup"element={<SignUp />}  />
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/cars" element={<Cars />} />
-          <Route path="/booking" element={<BookingForm />} />
-          <Route path="/cars/:id" element={<CarsDetail />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </UserProvider>
+    <Router>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/about" element={<About/>}/>
+        <Route path="/services" element={<Services/>}/>
+        <Route path="/pricing" element={<Pricing/>}/>
+        <Route path="/cars" element={<Cars/>}/>
+        <Route path="/cars/:id" element={<CarsDetail/>}/>
+        <Route path="/contact" element={<Contact/>}/>
+        <Route path="/signup" element={<SignUpPage/>}/> {/* Added Sign-up route */}
+      </Routes>
+      <Footer/>
+    </Router>
   );
 }
 
