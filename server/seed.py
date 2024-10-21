@@ -1,5 +1,5 @@
-from app import app, db  # Import your Flask app and db from the app module
-from models import User, Car, Booking, Payment  # Import the models
+from app import app, db
+from models import User, Car, Booking, Payment
 from werkzeug.security import generate_password_hash
 from datetime import datetime, timedelta
 import random
@@ -12,7 +12,6 @@ def random_date_range():
 
 # Seed function to populate the database
 def seed_data():
-    # Drop and recreate all tables (use cautiously in production)
     db.drop_all()
     db.create_all()
 
@@ -29,30 +28,30 @@ def seed_data():
     # Seed Cars (10 cars with all fields populated)
     cars = [
         Car(type='Sedan', name='Toyota Camry', description='Comfortable and efficient', price=55.0,
-            image_url='https://example.com/camry.jpg', status='available', review=4.2),
+            image_url='https://unsplash.com/photos/green-mercedes-benz-coupe-on-road-during-daytime-q1bBfWG1G1E', status='available', review=4.2),
         Car(type='Hatchback', name='Honda Fit', description='Compact and reliable', price=40.0,
-            image_url='https://example.com/fit.jpg', status='available', review=4.1),
+            image_url='https://unsplash.com/photos/a-black-car-parked-on-the-side-of-a-road-Zqkggjuco7o', status='available', review=4.1),
         Car(type='SUV', name='Ford Explorer', description='Spacious and powerful', price=80.0,
-            image_url='https://example.com/explorer.jpg', status='available', review=4.5),
+            image_url='https://unsplash.com/photos/a-black-car-on-a-road-2yBawNkiAbc', status='available', review=4.5),
         Car(type='Electric', name='Tesla Model 3', description='Modern and electric', price=100.0,
-            image_url='https://example.com/model3.jpg', status='available', review=4.8),
+            image_url='https://unsplash.com/photos/silver-porsche-911-parked-on-parking-lot-during-daytime-U-DgtDG6MRo', status='available', review=4.8),
         Car(type='Convertible', name='Mazda MX-5', description='Sporty and fun', price=70.0,
-            image_url='https://example.com/mx5.jpg', status='available', review=4.7),
+            image_url='https://unsplash.com/photos/white-porsche-911-on-green-grass-field-under-blue-sky-during-daytime-pB7bUdsc0FM', status='available', review=4.7),
         Car(type='Luxury', name='BMW X5', description='Elegant and comfortable', price=120.0,
-            image_url='https://example.com/x5.jpg', status='available', review=4.6),
+            image_url='https://unsplash.com/photos/a-black-and-white-photo-of-a-bmw-YdM97Vok33Y', status='available', review=4.6),
         Car(type='Sedan', name='Mercedes-Benz C-Class', description='Luxury and performance', price=130.0,
-            image_url='https://example.com/cclass.jpg', status='available', review=4.9),
+            image_url='https://unsplash.com/photos/a-blue-car-driving-down-a-street-next-to-a-parking-meter-H7PUik3WE6E', status='available', review=4.9),
         Car(type='SUV', name='Jeep Wrangler', description='Off-road and tough', price=90.0,
-            image_url='https://example.com/wrangler.jpg', status='available', review=4.3),
-        Car(type='Hybrid', name='Toyota Prius', description='Fuel-efficient and smart', price=50.0,
-            image_url='https://example.com/prius.jpg', status='available', review=4.5),
+            image_url='https://unsplash.com/photos/two-jeeps-are-parked-in-a-grassy-field-Q8hrdqWGQjY', status='available', review=4.3),
+        Car(type='Sporty', name='Porche 911', description='Fuel-efficient and smart', price=50.0,
+            image_url='https://unsplash.com/photos/a-silver-and-black-sports-car-on-display-at-a-car-show-e4Jg3z0MORk', status='available', review=4.5),
         Car(type='Truck', name='Ford F-150', description='Strong and reliable', price=95.0,
-            image_url='https://example.com/f150.jpg', status='available', review=4.4)
+            image_url='https://unsplash.com/photos/a-large-black-truck-parked-in-a-parking-lot-J873IhXuJhE', status='available', review=4.4)
     ]
 
     # Seed Bookings (Random users and cars, valid date ranges, and different statuses)
     bookings = []
-    for _ in range(5):  # Create 5 random bookings
+    for _ in range(5):
         user = random.choice(users)
         car = random.choice(cars)
         start_date, end_date = random_date_range()
@@ -81,14 +80,12 @@ def seed_data():
             )
             payments.append(payment)
 
-    # Add everything to the session
-    db.session.add_all(users + cars + bookings + payments)
 
-    # Commit the transaction
+    db.session.add_all(users + cars + bookings + payments)
     db.session.commit()
 
     print("Database seeded successfully!")
 
 if __name__ == "__main__":
-    with app.app_context():  # Ensure we're running inside the application context
+    with app.app_context():
         seed_data()
