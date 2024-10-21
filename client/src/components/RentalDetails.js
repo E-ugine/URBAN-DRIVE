@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 // import '../styles/rental-details.css';
 
 function RentalDetails() {
-  const { state } = useLocation(); // Get the passed state from Cart
+  const { state } = useLocation(); 
   const { cart, days } = state || {};
   
   const totalAmount = cart.reduce((total, car) => total + car.price * days, 0);

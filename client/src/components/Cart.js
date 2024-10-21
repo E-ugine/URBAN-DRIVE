@@ -5,7 +5,7 @@ import '../styles/cart.css';
 
 function Cart() {
   const { cart, removeFromCart, clearCart } = useContext(CartContext);
-  const [days, setDays] = useState(1); // State to store the number of rental days
+  const [days, setDays] = useState(1); 
   const navigate = useNavigate();
 
   const handleProceedToPay = () => {
@@ -13,7 +13,6 @@ function Cart() {
       alert('Your cart is empty!');
       return;
     }
-    // Navigate to rental details page, passing the cart and the rental days
     navigate('/rental-details', { state: { cart, days } });
   };
 
