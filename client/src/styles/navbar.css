@@ -1,19 +1,20 @@
+/* Navbar Styles */
 .navbar {
   background-color: silver; 
-  padding: 20px 0;
-  width: 100%;
+  padding: 20px 0; /* Vertical padding for spacing */
+  width: 100%; /* Full width of the viewport */
 }
 
 .navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 90%;
-  margin: auto;
+  display: flex; /* Use Flexbox for layout */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between logo and nav links */
+  width: 90%; /* Keep content responsive */
+  margin: auto; /* Center the container */
 }
 
 .logo {
-  font-size: 2em;
+  font-size: 2em; /* Logo font size */
   color: grey; /* Logo color */
 }
 
@@ -22,21 +23,27 @@
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 30px;
+  list-style: none; /* Remove default list styling */
+  display: flex; /* Use Flexbox for horizontal layout */
+  gap: 30px; /* Space between nav links */
+}
+
+.nav-links li {
+  flex: 1; /* Allow each link to grow equally */
+  text-align: center; /* Center text inside each link */
 }
 
 .nav-links li a {
-  color: grey; /* Change link color to grey */
-  text-decoration: wavy;
-  font-size: 1.3em;
-  font-weight: bold;
-  margin-right: 90px;
+  color: grey; /* Link color */
+  text-decoration: none; /* Remove underline */
+  font-size: 1.3em; /* Font size for links */
+  font-weight: bold; /* Bold text */
+  padding: 10px; /* Add padding for clickable area */
+  transition: color 0.3s; /* Smooth transition for hover effect */
 }
 
 .nav-links li a:hover {
-  color: green; /* Color when hovered */
+  color: green; /* Change color on hover */
 }
 
 h1 {
@@ -45,4 +52,22 @@ h1 {
 
 h1 em {
   color: #1085ff; /* Emphasized text color */
+}
+
+/* Optional: Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column; /* Stack elements vertically on small screens */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .nav-links {
+    flex-direction: column; /* Stack nav links vertically */
+    gap: 10px; /* Reduced gap for stacked links */
+  }
+
+  .nav-links li {
+    flex: none; /* Do not allow nav links to grow */
+    width: 100%; /* Full width for each link */
+  }
 }
