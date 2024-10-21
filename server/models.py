@@ -103,7 +103,7 @@ class Payment(db.Model, SerializerMixin):
 
     __table_args__ = (
         CheckConstraint('amount_received >= 0', name='check_positive_received'),
-        CheckConstraint("status IN ('pending', 'complete')", name='check_payment_status'),
+        CheckConstraint("status IN ('pending', 'complete', 'failed')", name='check_payment_status'),
     )
 
     def __repr__(self):

@@ -63,7 +63,7 @@ def seed_data():
         car = random.choice(cars)
         start_date, end_date = random_date_range()
         total_cost = (end_date - start_date).days * car.price
-        status = random.choice(['pending', 'active', 'completed'])
+        status = random.choice(['pending', 'active', 'complete'])
 
         booking = Booking(
             user_id=user.id,
@@ -81,12 +81,12 @@ def seed_data():
     # Seed Payments (Match with some of the bookings)
     payments = []
     for booking in bookings:
-        if booking.status == 'completed':
+        if booking.status == 'complete':
             payment = Payment(
                 booking_id=booking.id,
                 amount_received=booking.total_cost,
                 payment_date=datetime.utcnow(),
-                status='completed'
+                status='complete'
             )
             payments.append(payment)
 
