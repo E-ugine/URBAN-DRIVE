@@ -13,6 +13,7 @@ import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
+import RentalDetails from "./components/RentalDetails";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/rental-details" element={<RentalDetails />} />
           </Routes>
           <Footer />
         </Router>
