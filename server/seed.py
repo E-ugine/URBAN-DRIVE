@@ -71,7 +71,7 @@ def seed_data():
     # Seed Payments (Match with some of the bookings)
     payments = []
     for booking in bookings:
-        if booking.status == 'completed':  # Only completed bookings have payments
+        if booking.status == 'completed':
             payment = Payment(
                 booking_id=booking.id,
                 amount_received=booking.total_cost,
