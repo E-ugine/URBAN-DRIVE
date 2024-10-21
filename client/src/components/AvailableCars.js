@@ -7,7 +7,7 @@ function AvailableCars() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3001/cars')
+    fetch('/cars')
       .then(response => response.json())
       .then(data => {
         setCars(data.slice(0, 4)); 
