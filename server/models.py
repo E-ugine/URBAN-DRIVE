@@ -6,6 +6,8 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
+
+
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
     

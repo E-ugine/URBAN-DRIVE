@@ -16,7 +16,9 @@ import Cart from "./components/Cart";
 import RentalDetails from "./components/RentalDetails";
 import PaymentDetails from "./components/PaymentDetails";
 
+
 function App() {
+  
   return (
     <UserProvider>
       <CartProvider> 

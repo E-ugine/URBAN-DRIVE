@@ -50,7 +50,7 @@ function BookingForm() {
           <FormGroup className="booking__form d-inline-block ms-1 mb-4">
             <input type="number" placeholder="Phone Number" />
           </FormGroup>
-          <FormGroup className="booking__form d-inline-block me-4 mb-4">
+          {/* <FormGroup className="booking__form d-inline-block me-4 mb-4">
             <input type="text" placeholder="From Address" />
           </FormGroup>
           <FormGroup className="booking__form d-inline-block ms-1 mb-4">
@@ -82,7 +82,7 @@ function BookingForm() {
           </FormGroup>
           <FormGroup>
             <textarea rows={5} type="textarea" className="textarea" placeholder="Write"></textarea>
-          </FormGroup>
+          </FormGroup> */}
           <button className="reserve-btn" type="submit">Reserve Now</button>
         </Form>
       </div>

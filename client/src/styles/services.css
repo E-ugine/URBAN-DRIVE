@@ -6,6 +6,7 @@
   .services-section h2 {
     font-size: 2.5em;
     margin-bottom: 40px;
+    text-align: center;
   }
   
   .services-list {
@@ -25,7 +26,7 @@
   .service-icon {
     font-size: 3em;
     margin-bottom: 20px;
-    color: #f10909;
+    color: #1085ff;
   }
   
   .service-card h3 {

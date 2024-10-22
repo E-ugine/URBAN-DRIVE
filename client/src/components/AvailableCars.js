@@ -10,7 +10,7 @@ function AvailableCars() {
     fetch('/cars')
       .then(response => response.json())
       .then(data => {
-        setCars(data.slice(0, 4)); 
+        setCars(data.slice(0, 3)); 
         setLoading(false);
       })
       .catch(error => console.error('Error fetching cars:', error));
