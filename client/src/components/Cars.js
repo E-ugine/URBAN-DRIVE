@@ -5,36 +5,28 @@ import '../styles/cars.css';
 function Cars() {
   const [cars, setCars] = useState([]);
   const [search, setSearch] = useState('');
-  const [minPrice, setMinPrice] = useState(''); 
-  const [maxPrice, setMaxPrice] = useState(''); 
-  const [filteredCars, setFilteredCars] = useState([]); 
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [filteredCars, setFilteredCars] = useState([]);
   const [loading, setLoading] = useState(true);
-console.log(cars)
+
   useEffect(() => {
     fetch('/cars')
       .then((response) => response.json())
       .then((data) => {
         setCars(data);
-        setFilteredCars(data); 
+        setFilteredCars(data);
         setLoading(false);
       })
       .catch((error) => console.error('Error fetching cars data:', error));
   }, []);
 
-  function handleSearchChange(event){
-    setSearch(event.target.value);
-  };
-
-  function handleMinPriceChange(event){
-    setMinPrice(event.target.value);
-  };
-
-  function handleMaxPriceChange (event) {
-    setMaxPrice(event.target.value);
-  };
+  const handleSearchChange = (event) => setSearch(event.target.value);
+  const handleMinPriceChange = (event) => setMinPrice(event.target.value);
+  const handleMaxPriceChange = (event) => setMaxPrice(event.target.value);
 
   const handleSubmit = (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const toLowerCaseSearch = search.toLowerCase();
     const filtered = cars.filter((car) => {
@@ -48,7 +40,8 @@ console.log(cars)
 
       return matchesSearch && matchesMinPrice && matchesMaxPrice;
     });
-    setFilteredCars(filtered); 
+
+    setFilteredCars(filtered);
     setSearch('');
     setMinPrice('');
     setMaxPrice('');
@@ -61,7 +54,7 @@ console.log(cars)
   return (
     <div className="cars-page">
       <h1>Available Cars</h1>
-      
+
       <form onSubmit={handleSubmit} className="search-bar">
         <input
           type="text"
@@ -81,11 +74,14 @@ console.log(cars)
           value={maxPrice}
           onChange={handleMaxPriceChange}
         />
-        <button type="submit">Search</button> 
+        <button type="submit">Search</button>
       </form>
+      
       <div className="car-list">
         {filteredCars.length > 0 ? (
-          filteredCars.map((car) => <CarsCard key={car.id} car={car} />)
+          filteredCars.map((car) => (
+            <CarsCard key={car.id} car={car} />
+          ))
         ) : (
           <p>No cars found matching your criteria.</p>
         )}

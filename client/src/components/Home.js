@@ -15,6 +15,7 @@ function Home() {
         </div>
         <p>Welcome to UrbanDrive Your journey starts here. Find the perfect car for your adventure.
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum blanditiis esse accusantium dignissimos labore laborum. Veniam, corporis mollitia temporibus, in quaerat vero deleniti amet dolorem repudiandae, pariatur nam dolore! Impedit neque sit ad temporibus quam similique dolor ipsam praesentium sunt.
+        
         </p>
       </div>
       <AvailableCars />
