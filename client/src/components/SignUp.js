@@ -1,143 +1,71 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../styles/SignUp.css'; 
 
 const SignUp = () => {
-  const navigate = useNavigate();
   console.log("SignUp page loaded"); 
   const [formData, setFormData] = useState({
-    username: '',
+    fullName: '',
     email: '',
     password: '',
     confirmPassword: '',
   });
 
-  const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-
-  const validateForm = () => {
-    const newErrors = {};
-
-    // Validate username
-    if (!formData.username.trim()) {
-      newErrors.username = 'Username is required!';
-    }
-
-    // Validate email
-    const emailRegex = /^[\w\.-]+@[\w\.-]+\.\w+$/;
-    if (!formData.email) {
-      newErrors.email = 'Email is required';
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
-    }
-
-    // Validate password
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else if (formData.password.length < 8) {
-      newErrors.password = 'Password must be at least 8 characters long';
-    } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password)) {
-      newErrors.password = 'Password must contain uppercase, lowercase, and numbers';
-    }
-
-    // Validate password confirmation
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
-    }
-
-    return newErrors;
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Validate form
-    const formErrors = validateForm();
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
-      return;
-    }
-
-    setIsLoading(true);
-
+    // Check if the passwords match
+  if (formData.password === formData.confirmPassword) {
     try {
-      const response = await fetch('http://localhost:5555/api/signup', {
+      // Make a POST request to your Flask server
+      const response = await fetch('/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          username: formData.username,
-          email: formData.email,
-          password: formData.password
-        }),
+        body: JSON.stringify(formData), // Send the form data as JSON
       });
 
-      const data = await response.json();
+      const result = await response.json();
 
       if (response.ok) {
-        // Store token and user data
-        localStorage.setItem('token', data.access_token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        
-        // Show success message
+        console.log('User registered successfully', result);
+        // Redirect the user or show a success message
         alert('Registration successful!');
-        
-        // Redirect to home page or dashboard
-        navigate('/');
       } else {
-        // Handle specific error cases
-        if (response.status === 409) {
-          setErrors({ email: 'Email already registered' });
-        } else {
-          setErrors({ submit: data.error || 'Registration failed' });
-        }
+        // Handle errors returned from the server
+        alert(result.message || 'Registration failed. Please try again.');
       }
     } catch (error) {
-      console.error('Registration error:', error);
-      setErrors({ submit: 'Network error. Please try again later.' });
-    } finally {
-      setIsLoading(false);
+      console.error('Error during registration:', error);
+      alert('An error occurred. Please try again later.');
     }
-  };
+  } else {
+    alert("Passwords don't match!");
+  }
+};
 
   return (
     <div className="signup-container">
       <form className="signup-form" onSubmit={handleSubmit}>
         <h1>Urban-Drive Sign Up</h1>
-
-        {errors.submit && (
-          <div className="error-message">{errors.submit}</div>
-        )}
         
         <div className="input-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="fullName">Full Name</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={formData.username}
+            id="fullName"
+            name="fullName"
+            value={formData.fullName}
             onChange={handleChange}
-            className={errors.username ? 'error' : ''}
+            required
           />
-           {errors.username && (
-            <div className="error-message">{errors.username}</div>
-          )}
         </div>
         
         <div className="input-group">
@@ -148,11 +76,8 @@ const SignUp = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={errors.email ? 'error' : ''}
+            required
           />
-          {errors.email && (
-            <div className="error-message">{errors.email}</div>
-          )}
         </div>
 
         <div className="input-group">
@@ -163,11 +88,8 @@ const SignUp = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
-            className={errors.password ? 'error' : ''}
+            required
           />
-          {errors.password && (
-            <div className="error-message">{errors.password}</div>
-          )}
         </div>
 
         <div className="input-group">
@@ -178,16 +100,11 @@ const SignUp = () => {
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
-            className={errors.confirmPassword ? 'error' : ''}
+            required
           />
-           {errors.confirmPassword && (
-            <div className="error-message">{errors.confirmPassword}</div>
-          )}
         </div>
 
-        <button type="submit" className="signup-btn" disabled={isLoading}>
-          {isLoading ? 'Signing up...' : 'Sign Up'}
-        </button>
+        <button type="submit" className="signup-btn">Sign Up</button>
         
         <p className="login-redirect">
           Already have an account? <a href="/login">Log In</a>
