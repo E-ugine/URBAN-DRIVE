@@ -1,52 +1,56 @@
 .navbar {
-  background-color: silver;
-  padding: 20px 0;
-  width: 100%; 
-   /* position: fixed;  */
-  /* top: -30px; 
-  z-index: 1000;
- 
-  transition: top 0.3s;  */
+  background-color: silver; /* Navbar background color */
+  padding: 20px 0; /* Padding for top and bottom */
+  width: 100%; /* Full width */
+  position: fixed; /* Fix the navbar at the top of the viewport */
+  top: 0; /* Align it to the top */
+  z-index: 1000; /* Ensure it stays above other content */
+  transition: top 0.3s; /* Smooth transition for any top property changes */
 }
 
 .navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 90%;
-  margin: auto;
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space items evenly */
+  width: 90%; /* Set the width of the container */
+  margin: auto; /* Center the container */
 }
 
 .logo {
-  font-size: 2em;
+  font-size: 2em; /* Logo font size */
 }
 
 .logo span {
-  color: green;
+  color: green; /* Color for the span within the logo */
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 30px;
+  list-style: none; /* Remove bullet points */
+  display: flex; /* Use flexbox for horizontal links */
+  gap: 30px; /* Space between links */
 }
 
 .nav-links li a {
-  color: #1085ff;
-  text-decoration: none;
-  font-size: 1.3em;
-  font-weight: bold;
-  margin-right: 90px;
+  color: #1085ff; /* Link color */
+  text-decoration: none; /* Remove underline */
+  font-size: 1.3em; /* Font size for links */
+  font-weight: bold; /* Bold links */
+  margin-right: 90px; /* Right margin for spacing */
 }
 
 .nav-links li a:hover {
-  color: green;
+  color: green; /* Change color on hover */
 }
 
-h1{
-  color: black;
+h1 {
+  color: black; /* Color for h1 headings */
 }
 
 h1 em {
-  color: #1085ff;
+  color: #1085ff; /* Color for emphasized text in h1 */
+}
+
+/* Optional: Add margin to the body to prevent overlap */
+body {
+  margin-top: 80px; /* Adjust according to your navbar height */
 }
