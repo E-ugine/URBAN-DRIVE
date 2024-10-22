@@ -26,20 +26,26 @@
 }
 
 h4 {
-  color: #007bff; 
+  color: #007bff;
+  text-align: center; /* Blue color for important information */
 }
 
 
 .ri-phone-line {
   color: #007bff; 
   font-size: 1.8rem;
+  text-align: center;
 }
 
 
 h6.section__subtitle {
-  color: #80d0ff; 
+  color: #80d0ff;
+
+  text-align: center;
+   /* Light blue for Experts section subtitle */
 }
 
 h2.section__title {
-  color: #007bff; 
+  color: #007bff;
+  text-align: center; /* Blue title for Our Members */
 }
