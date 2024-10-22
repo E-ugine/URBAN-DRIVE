@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from flask import Flask, jsonify, request, make_response,send_file
 from flask_sqlalchemy import SQLAlchemy
-from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from datetime import datetime
 from flask_restful import Api, Resource
 from models import db, Car, User, Booking
@@ -63,7 +63,7 @@ class Users(Resource):
         ]
         return users, 200
 
-    @jwt_required()
+    # @jwt_required()
     def delete(self, id):
         user = User.query.get(id)
         if user is None:
@@ -72,7 +72,39 @@ class Users(Resource):
         db.session.delete(user)
         db.session.commit()
         return {"message": "User deleted successfully!"}, 200
-
+    
+    def post(self):
+        data = request.get_json()
+        
+        # Check if user with the same username or email already exists
+        if User.query.filter_by(username=data['username']).first():
+            return {"error": "Username already exists"}, 400
+        if User.query.filter_by(email=data['email']).first():
+            return {"error": "Email already exists"}, 400
+        
+        # Create new user
+        new_user = User(
+            username=data['username'],
+            email=data['email']
+        )
+        new_user.set_password(data['password'])
+        
+        db.session.add(new_user)
+        db.session.commit()
+        
+        # Create access token
+        access_token = create_access_token(identity=new_user.id)
+        
+        return {
+            "message": "User created successfully",
+            "user": {
+                "id": new_user.id,
+                "username": new_user.username,
+                "email": new_user.email
+            },
+            "access_token": access_token
+        }, 201
+    
 
 ### CARS RESOURCE ###
 class Cars(Resource):
@@ -109,7 +141,7 @@ class Cars(Resource):
         ]
         return cars, 200
 
-    @jwt_required()
+    # @jwt_required()
     def delete(self, id):
         car = Car.query.get(id)
         if car is None:
@@ -152,7 +184,7 @@ class Bookings(Resource):
             "status": booking.status
         } for booking in bookings], 200
 
-    @jwt_required()
+    # @jwt_required()
     def post(self):
         data = request.get_json()
         current_user_id = get_jwt_identity()
@@ -171,7 +203,7 @@ class Bookings(Resource):
 
         return {"message": "Booking created successfully!"}, 201
 
-    @jwt_required()
+    # @jwt_required()
     def put(self, id):
         current_user_id = get_jwt_identity()
         booking = Booking.query.get(id)
