@@ -3,11 +3,11 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f8ff; /* Light blue background */
+  background-color: #f0f8ff; 
 }
 
 .signup-form {
-  background-color: #ffffff; /* White background for the form */
+  background-color: #ffffff; 
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,7 @@
 .input-group label {
   display: block;
   font-size: 14px;
-  color: #000000; /* Black text color */
+  color: #000000; 
   margin-bottom: 5px;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .signup-btn {
-  background-color: #007bff; /* Blue button */
+  background-color: #007bff; 
   color: white;
   padding: 10px 15px;
   border: none;
@@ -44,7 +44,7 @@
 }
 
 .signup-btn:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
 }
 
 .login-redirect {

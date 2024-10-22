@@ -1,56 +1,56 @@
 .navbar {
-  background-color: silver; /* Navbar background color */
-  padding: 20px 0; /* Padding for top and bottom */
-  width: 100%; /* Full width */
-  position: fixed; /* Fix the navbar at the top of the viewport */
-  top: 0; /* Align it to the top */
-  z-index: 1000; /* Ensure it stays above other content */
-  transition: top 0.3s; /* Smooth transition for any top property changes */
+  background-color: silver; 
+  padding: 20px 0; 
+  width: 100%;
+  position: fixed; 
+  top: 0; 
+  z-index: 1000; 
+  transition: top 0.3s; 
 }
 
 .navbar-container {
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Center items vertically */
-  justify-content: space-between; /* Space items evenly */
-  width: 90%; /* Set the width of the container */
-  margin: auto; /* Center the container */
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  width: 90%; 
+  margin: auto; 
 }
 
 .logo {
-  font-size: 2em; /* Logo font size */
+  font-size: 2em; 
 }
 
 .logo span {
-  color: green; /* Color for the span within the logo */
+  color: green; 
 }
 
 .nav-links {
-  list-style: none; /* Remove bullet points */
-  display: flex; /* Use flexbox for horizontal links */
-  gap: 30px; /* Space between links */
+  list-style: none; 
+  display: flex; 
+  gap: 30px; 
 }
 
 .nav-links li a {
-  color: #1085ff; /* Link color */
-  text-decoration: none; /* Remove underline */
-  font-size: 1.3em; /* Font size for links */
-  font-weight: bold; /* Bold links */
-  margin-right: 90px; /* Right margin for spacing */
+  color: #1085ff; 
+  text-decoration: none; 
+  font-size: 1.3em; 
+  font-weight: bold; 
+  margin-right: 90px; 
 }
 
 .nav-links li a:hover {
-  color: green; /* Change color on hover */
+  color: green; 
 }
 
 h1 {
-  color: black; /* Color for h1 headings */
+  color: black; 
 }
 
 h1 em {
-  color: #1085ff; /* Color for emphasized text in h1 */
+  color: #1085ff; 
 }
 
-/* Optional: Add margin to the body to prevent overlap */
+/*Add margin to the body to prevent overlap */
 body {
-  margin-top: 80px; /* Adjust according to your navbar height */
+  margin-top: 80px; 
 }
