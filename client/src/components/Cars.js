@@ -9,9 +9,9 @@ function Cars() {
   const [maxPrice, setMaxPrice] = useState(''); 
   const [filteredCars, setFilteredCars] = useState([]); 
   const [loading, setLoading] = useState(true);
-
+console.log(cars)
   useEffect(() => {
-    fetch('http://localhost:3001/cars')
+    fetch('/cars')
       .then((response) => response.json())
       .then((data) => {
         setCars(data);

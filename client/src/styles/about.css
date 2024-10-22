@@ -1,48 +1,45 @@
-/* General section styling */
 .about__page-section {
-  background-color: #001f3f; /* Dark blue background */
-  color: #ffffff; /* White text for contrast */
+  background-color: #001f3f; 
+  color: #ffffff; 
   padding: 60px 0;
 }
 
-/* Title styling */
 .section__title {
-  color: #007bff; /* Blue text for titles */
+  color: #007bff; 
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-/* Paragraph styling */
 .section__description {
-  color: #d1e7ff; /* Light blue text for descriptions */
+  color: #d1e7ff; 
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 15px;
 }
 
-/* Contact section styling */
+
 .section__subtitle {
-  color: #80d0ff; /* Lighter blue for subtitles */
+  color: #80d0ff; 
   font-size: 1.2rem;
   font-weight: bold;
 }
 
 h4 {
-  color: #007bff; /* Blue color for important information */
+  color: #007bff; 
 }
 
-/* Icon styling */
+
 .ri-phone-line {
-  color: #007bff; /* Blue phone icon */
+  color: #007bff; 
   font-size: 1.8rem;
 }
 
-/* Experts section */
+
 h6.section__subtitle {
-  color: #80d0ff; /* Light blue for Experts section subtitle */
+  color: #80d0ff; 
 }
 
 h2.section__title {
-  color: #007bff; /* Blue title for Our Members */
+  color: #007bff; 
 }

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 from flask import Flask, jsonify, request, make_response
 from flask_sqlalchemy import SQLAlchemy
-from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from datetime import datetime
 from flask_restful import Api, Resource
 from models import db, Car, User, Booking
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
-
+from flask_cors import CORS
 # Initialize Flask app
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///urban_drive.db'
@@ -21,6 +21,7 @@ migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 api = Api(app)
+CORS(app, resources={r"/*":{"origin":"http://127.0.0.1:4000"}})
 
 @app.route('/')
 def home():
@@ -29,45 +30,77 @@ def home():
 
 ### USERS RESOURCE ###
 class Users(Resource):
-    @jwt_required()
+    # @jwt_required()
     def get(self, id=None):
         if id:  # Get a specific user by ID
             user = User.query.get(id)
             if user is None:
-                return jsonify({"error": "User not found"}), 404
-            return jsonify({
+                return {"error": "User not found"}, 404
+            return {
                 "id": user.id,
                 "username": user.username,
                 "email": user.email
-            }), 200
+            }, 200
 
         # Get all users
         users = [
             {"id": user.id, "username": user.username, "email": user.email}
             for user in User.query.all()
         ]
-        return jsonify(users), 200
+        return users, 200
 
-    @jwt_required()
+    # @jwt_required()
     def delete(self, id):
         user = User.query.get(id)
         if user is None:
-            return jsonify({"error": "User not found"}), 404
+            return {"error": "User not found"}, 404
 
         db.session.delete(user)
         db.session.commit()
-        return jsonify({"message": "User deleted successfully!"}), 200
-
+        return {"message": "User deleted successfully!"}, 200
+    
+    def post(self):
+        data = request.get_json()
+        
+        # Check if user with the same username or email already exists
+        if User.query.filter_by(username=data['username']).first():
+            return {"error": "Username already exists"}, 400
+        if User.query.filter_by(email=data['email']).first():
+            return {"error": "Email already exists"}, 400
+        
+        # Create new user
+        new_user = User(
+            username=data['username'],
+            email=data['email']
+        )
+        new_user.set_password(data['password'])
+        
+        db.session.add(new_user)
+        db.session.commit()
+        
+        # Create access token
+        access_token = create_access_token(identity=new_user.id)
+        
+        return {
+            "message": "User created successfully",
+            "user": {
+                "id": new_user.id,
+                "username": new_user.username,
+                "email": new_user.email
+            },
+            "access_token": access_token
+        }, 201
+    
 
 ### CARS RESOURCE ###
 class Cars(Resource):
-    @jwt_required()
+    # @jwt_required()
     def get(self, id=None):
         if id: #get by id
             car = Car.query.get(id)
             if car is None:
-                return jsonify({"error": "Car not found"}), 404
-            return jsonify({
+                return {"error": "Car not found"}, 404
+            return {
                 "id": car.id,
                 "type": car.type,
                 "name": car.name,
@@ -76,7 +109,7 @@ class Cars(Resource):
                 "image_url": car.image_url,
                 "status": car.status,
                 "review": car.review
-            }), 200
+            }, 200
 
         # Get all cars
         cars = [
@@ -86,33 +119,34 @@ class Cars(Resource):
                 "name": car.name,
                 "price": car.price,
                 "status": car.status,
-                "review": car.review
+                "review": car.review,
+                "image_url": car.image_url
             }
             for car in Car.query.all()
         ]
-        return jsonify(cars), 200
+        return cars, 200
 
-    @jwt_required()
+    # @jwt_required()
     def delete(self, id):
         car = Car.query.get(id)
         if car is None:
-            return jsonify({"error": "Car not found"}), 404
+            return {"error": "Car not found"}, 404
 
         db.session.delete(car)
         db.session.commit()
-        return jsonify({"message": "Car deleted successfully!"}), 200
+        return {"message": "Car deleted successfully!"}, 200
 
 
 ### BOOKINGS RESOURCE ###
 class Bookings(Resource):
-    @jwt_required()
+    # @jwt_required()
     def get(self, id=None):
         current_user_id = get_jwt_identity()
         if id:  # Get a specific booking by ID
             booking = Booking.query.get(id)
             if booking is None or booking.user_id != current_user_id:
-                return jsonify({"error": "Booking not found or unauthorized"}), 404
-            return jsonify({
+                return {"error": "Booking not found or unauthorized"}, 404
+            return {
                 "id": booking.id,
                 "user_id": booking.user_id,
                 "car_id": booking.car_id,
@@ -120,11 +154,12 @@ class Bookings(Resource):
                 "end_date": booking.end_date,
                 "total_cost": booking.total_cost,
                 "status": booking.status
-            }), 200
+            }, 200
 
         # Get all bookings for the current user
         bookings = Booking.query.filter_by(user_id=current_user_id).all()
-        return jsonify([{
+        return [
+            {
             "id": booking.id,
             "user_id": booking.user_id,
             "car_id": booking.car_id,
@@ -132,9 +167,9 @@ class Bookings(Resource):
             "end_date": booking.end_date,
             "total_cost": booking.total_cost,
             "status": booking.status
-        } for booking in bookings]), 200
+        } for booking in bookings], 200
 
-    @jwt_required()
+    # @jwt_required()
     def post(self):
         data = request.get_json()
         current_user_id = get_jwt_identity()
@@ -151,9 +186,9 @@ class Bookings(Resource):
         db.session.add(new_booking)
         db.session.commit()
 
-        return jsonify({"message": "Booking created successfully!"}), 201
+        return {"message": "Booking created successfully!"}, 201
 
-    @jwt_required()
+    # @jwt_required()
     def put(self, id):
         current_user_id = get_jwt_identity()
         booking = Booking.query.get(id)
@@ -168,7 +203,7 @@ class Bookings(Resource):
             booking.total_cost = data['total_cost']
 
         db.session.commit()
-        return jsonify({"message": "Booking updated successfully!"}), 200
+        return {"message": "Booking updated successfully!"}, 200
 
     @jwt_required()
     def delete(self, id):
@@ -176,11 +211,11 @@ class Bookings(Resource):
         booking = Booking.query.get(id)
 
         if booking is None or booking.user_id != current_user_id:
-            return jsonify({"error": "Booking not found or unauthorized"}), 404
+            return {"error": "Booking not found or unauthorized"}, 404
 
         db.session.delete(booking)
         db.session.commit()
-        return jsonify({"message": "Booking canceled successfully!"}), 200
+        return {"message": "Booking canceled successfully!"}, 200
 
 
 # Registering Resources with Routes

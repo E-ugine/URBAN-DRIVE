@@ -1,52 +1,56 @@
 .navbar {
-  background-color: silver;
-  padding: 20px 0;
-  width: 100%; 
-   /* position: fixed;  */
-  /* top: -30px; 
-  z-index: 1000;
- 
-  transition: top 0.3s;  */
+  background-color: silver; 
+  padding: 20px 0; 
+  width: 100%;
+  position: fixed; 
+  top: 0; 
+  z-index: 1000; 
+  transition: top 0.3s; 
 }
 
 .navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 90%;
-  margin: auto;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  width: 90%; 
+  margin: auto; 
 }
 
 .logo {
-  font-size: 2em;
+  font-size: 2em; 
 }
 
 .logo span {
-  color: green;
+  color: green; 
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 30px;
+  list-style: none; 
+  display: flex; 
+  gap: 30px; 
 }
 
 .nav-links li a {
-  color: #1085ff;
-  text-decoration: none;
-  font-size: 1.3em;
-  font-weight: bold;
-  margin-right: 90px;
+  color: #1085ff; 
+  text-decoration: none; 
+  font-size: 1.3em; 
+  font-weight: bold; 
+  margin-right: 90px; 
 }
 
 .nav-links li a:hover {
-  color: green;
+  color: green; 
 }
 
-h1{
-  color: black;
+h1 {
+  color: black; 
 }
 
 h1 em {
-  color: #1085ff;
+  color: #1085ff; 
+}
+
+/*Add margin to the body to prevent overlap */
+body {
+  margin-top: 80px; 
 }
