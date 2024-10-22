@@ -1,27 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/SignUp.css'; 
+import '../styles/login.css';
 
-const SignUp = () => {
+const Login = () => {
   const navigate = useNavigate();
-  console.log("SignUp page loaded"); 
   const [formData, setFormData] = useState({
-    username: '',
     email: '',
     password: '',
-    confirmPassword: '',
   });
-
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const validateForm = () => {
     const newErrors = {};
-
-    // Validate username
-    if (!formData.username.trim()) {
-      newErrors.username = 'Username is required!';
-    }
 
     // Validate email
     const emailRegex = /^[\w\.-]+@[\w\.-]+\.\w+$/;
@@ -34,15 +25,6 @@ const SignUp = () => {
     // Validate password
     if (!formData.password) {
       newErrors.password = 'Password is required';
-    } else if (formData.password.length < 8) {
-      newErrors.password = 'Password must be at least 8 characters long';
-    } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password)) {
-      newErrors.password = 'Password must contain uppercase, lowercase, and numbers';
-    }
-
-    // Validate password confirmation
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
     }
 
     return newErrors;
@@ -65,7 +47,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Validate form
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
@@ -76,15 +58,14 @@ const SignUp = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5555/api/signup', {
+      const response = await fetch('http://localhost:5555/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: formData.username,
           email: formData.email,
-          password: formData.password
+          password: formData.password,
         }),
       });
 
@@ -94,22 +75,22 @@ const SignUp = () => {
         // Store token and user data
         localStorage.setItem('token', data.access_token);
         localStorage.setItem('user', JSON.stringify(data.user));
-        
+
         // Show success message
-        alert('Registration successful!');
-        
+        alert('Login successful!');
+
         // Redirect to home page or dashboard
         navigate('/');
       } else {
         // Handle specific error cases
-        if (response.status === 409) {
-          setErrors({ email: 'Email already registered' });
+        if (response.status === 401) {
+          setErrors({ email: 'Invalid email or password' });
         } else {
-          setErrors({ submit: data.error || 'Registration failed' });
+          setErrors({ submit: data.error || 'Login failed' });
         }
       }
     } catch (error) {
-      console.error('Registration error:', error);
+      console.error('Login error:', error);
       setErrors({ submit: 'Network error. Please try again later.' });
     } finally {
       setIsLoading(false);
@@ -117,29 +98,14 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signup-container">
-      <form className="signup-form" onSubmit={handleSubmit}>
-        <h1>Urban-Drive Sign Up</h1>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h1>Urban-Drive Login</h1>
 
         {errors.submit && (
           <div className="error-message">{errors.submit}</div>
         )}
-        
-        <div className="input-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            className={errors.username ? 'error' : ''}
-          />
-           {errors.username && (
-            <div className="error-message">{errors.username}</div>
-          )}
-        </div>
-        
+
         <div className="input-group">
           <label htmlFor="email">Email Address</label>
           <input
@@ -149,6 +115,7 @@ const SignUp = () => {
             value={formData.email}
             onChange={handleChange}
             className={errors.email ? 'error' : ''}
+            required
           />
           {errors.email && (
             <div className="error-message">{errors.email}</div>
@@ -164,37 +131,23 @@ const SignUp = () => {
             value={formData.password}
             onChange={handleChange}
             className={errors.password ? 'error' : ''}
+            required
           />
           {errors.password && (
             <div className="error-message">{errors.password}</div>
           )}
         </div>
 
-        <div className="input-group">
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            className={errors.confirmPassword ? 'error' : ''}
-          />
-           {errors.confirmPassword && (
-            <div className="error-message">{errors.confirmPassword}</div>
-          )}
-        </div>
-
-        <button type="submit" className="signup-btn" disabled={isLoading}>
-          {isLoading ? 'Signing up...' : 'Sign Up'}
+        <button type="submit" className="login-btn" disabled={isLoading}>
+          {isLoading ? 'Logging in...' : 'Log In'}
         </button>
-        
-        <p className="login-redirect">
-          Already have an account? <a href="/login">Log In</a>
+
+        <p className="signup-redirect">
+          Don't have an account? <a href="/signup">Sign Up</a>
         </p>
       </form>
     </div>
   );
 };
 
-export default SignUp;
+export default Login;

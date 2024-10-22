@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserProvider } from './context/UserContext'; 
 import { CartProvider } from './context/CartContext'; 
-import SignUp from "./components/SignUp"; 
+import SignUp from "./components/SignUp";
+import Login from "./components/Login";
 import Home from "./components/Home";
 import About from "./components/About";
 import Cars from "./components/Cars";
@@ -32,6 +33,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/rental-details" element={<RentalDetails />} />
             <Route path="/payment-details" element={<PaymentDetails />} />
           </Routes>
