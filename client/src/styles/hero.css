@@ -34,3 +34,9 @@ font-size: 1.5em;
   font-size: 2em;
   margin-block: 0;
 }
+
+button {
+  background-color: #1085FF;
+  text-align: center;
+  justify-content: center;
+}

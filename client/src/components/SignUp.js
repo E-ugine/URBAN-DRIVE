@@ -18,16 +18,38 @@ const SignUp = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform validation, then submit form
-    if (formData.password === formData.confirmPassword) {
-      console.log('User Registered', formData);
-      // API call or navigation logic here
-    } else {
-      alert("Passwords don't match!");
+    // Check if the passwords match
+  if (formData.password === formData.confirmPassword) {
+    try {
+      // Make a POST request to your Flask server
+      const response = await fetch('/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData), // Send the form data as JSON
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log('User registered successfully', result);
+        // Redirect the user or show a success message
+        alert('Registration successful!');
+      } else {
+        // Handle errors returned from the server
+        alert(result.message || 'Registration failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+      alert('An error occurred. Please try again later.');
     }
-  };
+  } else {
+    alert("Passwords don't match!");
+  }
+};
 
   return (
     <div className="signup-container">

@@ -91,6 +91,34 @@ class Users(Resource):
             "access_token": access_token
         }, 201
     
+    @app.route('/signup', methods=['POST'])
+    def signup():
+        data = request.get_json()
+        full_name = data.get('fullName')
+        email = data.get('email')
+        password = data.get('password')
+        confirm_password = data.get('confirmPassword')
+    
+        # Validate input
+        if not full_name or not email or not password or password != confirm_password:
+            return jsonify({'message': 'Invalid input or passwords do not match'}), 400
+
+        # Check if user already exists
+        if User.query.filter_by(email=email).first():
+            return jsonify({'message': 'Email already in use'}), 409
+
+        # Create a new user
+        new_user = User(full_name=full_name, email=email)
+        new_user.set_password(password)
+
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+            return jsonify({'message': 'User registered successfully'}), 201
+        except Exception as e:
+            return jsonify({'message': 'Registration failed', 'error': str(e)}), 500
+
+
 
 ### CARS RESOURCE ###
 class Cars(Resource):
