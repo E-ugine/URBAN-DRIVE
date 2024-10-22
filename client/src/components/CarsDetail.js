@@ -9,7 +9,7 @@ function CarsDetail() {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetch(`http://localhost:3001/cars/${id}`)
+    fetch(`/cars/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setCar(data);

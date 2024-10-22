@@ -1,0 +1,14 @@
+.payment-details-container {
+    padding: 20px;
+  }
+  
+  .rental-days {
+    margin: 20px 0;
+  }
+  
+  .payment-notification {
+    margin-top: 20px;
+    color: green;
+    font-weight: bold;
+  }
+  

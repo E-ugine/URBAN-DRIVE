@@ -1,4 +1,3 @@
-/* General section styling */
 .about__page-section {
   background-color: #001f3f; /* Dark blue background */
   color: #ffffff; /* White text for contrast */
@@ -29,20 +28,26 @@
 }
 
 h4 {
-  color: #007bff; /* Blue color for important information */
+  color: #007bff;
+  text-align: center; /* Blue color for important information */
 }
 
 /* Icon styling */
 .ri-phone-line {
   color: #007bff; /* Blue phone icon */
   font-size: 1.8rem;
+  text-align: center;
 }
 
 /* Experts section */
 h6.section__subtitle {
-  color: #80d0ff; /* Light blue for Experts section subtitle */
+  color: #80d0ff;
+
+  text-align: center;
+   /* Light blue for Experts section subtitle */
 }
 
 h2.section__title {
-  color: #007bff; /* Blue title for Our Members */
+  color: #007bff;
+  text-align: center; /* Blue title for Our Members */
 }
