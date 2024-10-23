@@ -11,7 +11,7 @@ function CarsCard({ car }) {
     <div className="car-card" id={car.id}>
       <div className="car-card-img-container">
         {car.image_url ? (
-         <img className="car-card-img"  src={car.image_url.startsWith('http') ? car.image_url : `https://your-cdn.com/${car.image_url}`} style={{ width: '300px' }} alt={car.name}  />
+         <img className="car-card-img"  src={car.image_url.startsWith('http') ? car.image_url : `http://127.0.0.1:5555${car.image_url}`} style={{ width: '300px' }} alt={car.name}  />
      
         ) : (
           <div className="no-image">No Image Available</div>
