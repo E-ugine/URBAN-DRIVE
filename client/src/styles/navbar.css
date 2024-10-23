@@ -1,12 +1,7 @@
 .navbar {
   background-color: silver;
   padding: 20px 0;
-  width: 100%; 
-    /* position: fixed;  
-   top: -30px; 
-  z-index: 1000;
- 
-  transition: top 0.3s;   */
+  width: 100%;
 }
 
 .navbar-container {
@@ -21,14 +16,15 @@
   font-size: 2em; 
 }
 
-.logo span {
-  color: green; 
+.logo em {
+  color: #1085ff; 
 }
 
 .nav-links {
   list-style: none; 
   display: flex; 
-  gap: 30px; 
+  gap: 20px; 
+  align-items: center;
 }
 
 .nav-links li a {
@@ -36,22 +32,73 @@
   text-decoration: none; 
   font-size: 1.3em; 
   font-weight: bold; 
-  margin-right: 90px; 
 }
 
 .nav-links li a:hover {
   color: green; 
 }
 
+.cart-icon {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon a {
+  color: #1085ff;
+  text-decoration: none;
+}
+
+.cart-icon a:hover {
+  color: green; 
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: none;
+  border: none;
+  color: #1085ff;
+  font-size: 1.3em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  z-index: 100;
+  border-radius: 5px;
+  min-width: 150px; 
+  list-style: none;
+}
+
+.dropdown-content a {
+  color: #333;
+  text-decoration: none;
+  padding: 0.5rem;
+  font-size: 1.2em;
+  border-radius: 3px; 
+  transition: background-color 0.3s; 
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+  color: green;
+}
+
 h1 {
   color: black; 
 }
 
-h1 em {
-  color: #1085ff; 
-}
-
-/*Add margin to the body to prevent overlap */
 body {
   margin-top: 80px; 
 }
