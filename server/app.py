@@ -38,13 +38,75 @@ CORS(app, resources={r"/*":{"origin":"http://127.0.0.1:4000"}})
 def home():
     return 'Urban Drive API'
 
+### SIGNUP ROUTE ###
+@app.route('/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+    
+    # Check if user with the same username or email already exists
+    if User.query.filter_by(username=data['username']).first():
+        return jsonify({"error": "Username already exists"}), 409
+    if User.query.filter_by(email=data['email']).first():
+        return jsonify({"error": "Email already registered"}), 409
+    
+    # Create new user
+    new_user = User(
+        username=data['username'],
+        email=data['email']
+    )
+    new_user.set_password(data['password'])
+    
+    db.session.add(new_user)
+    db.session.commit()
+    
+    # Create access token
+    access_token = create_access_token(identity=new_user.id)
+    
+    return jsonify({
+        "message": "User created successfully",
+        "user": {
+            "id": new_user.id,
+            "username": new_user.username,
+            "email": new_user.email
+        },
+        "access_token": access_token
+    }), 201
+
+### LOGIN ROUTE ###
+@app.route('/login', methods=['POST', 'OPTIONS'])
+def login():
+    if request.method == 'OPTIONS':
+        # Handle preflight request
+        return jsonify({"message": "Preflight OK"}), 200
+
+    data = request.get_json()
+    user = User.query.filter_by(email=data['email']).first()
+
+    # Check if user exists and password is correct using the model's method
+    if user and user.check_password(data['password']):
+        access_token = create_access_token(identity=user.id)
+        return jsonify({
+            "message": "Login successful",
+            "user": {
+                "id": user.id,
+                "username": user.username,
+                "email": user.email
+            },
+            "access_token": access_token
+        }), 200
+    
+    return jsonify({"error": "Invalid email or password"}), 401
+
+
+
+
 
 IMAGE_DIRECTORY = '../server/static/image_uploads'
 
 
 ### USERS RESOURCE ###
 class Users(Resource):
-    # @jwt_required()
+    @jwt_required()
     def get(self, id=None):
         if id:  # Get a specific user by ID
             user = User.query.get(id)
@@ -63,7 +125,7 @@ class Users(Resource):
         ]
         return users, 200
 
-    # @jwt_required()
+    @jwt_required()
     def delete(self, id):
         user = User.query.get(id)
         if user is None:
@@ -141,7 +203,7 @@ class Cars(Resource):
         ]
         return cars, 200
 
-    # @jwt_required()
+    @jwt_required()
     def delete(self, id):
         car = Car.query.get(id)
         if car is None:
@@ -154,7 +216,7 @@ class Cars(Resource):
 
 ### BOOKINGS RESOURCE ###
 class Bookings(Resource):
-    # @jwt_required()
+    @jwt_required()
     def get(self, id=None):
         current_user_id = get_jwt_identity()
         if id:  # Get a specific booking by ID
@@ -184,7 +246,7 @@ class Bookings(Resource):
             "status": booking.status
         } for booking in bookings], 200
 
-    # @jwt_required()
+    @jwt_required()
     def post(self):
         data = request.get_json()
         current_user_id = get_jwt_identity()
@@ -203,7 +265,7 @@ class Bookings(Resource):
 
         return {"message": "Booking created successfully!"}, 201
 
-    # @jwt_required()
+    @jwt_required()
     def put(self, id):
         current_user_id = get_jwt_identity()
         booking = Booking.query.get(id)
