@@ -184,7 +184,7 @@ class Cars(Resource):
                 "type":car.type,
                 "description": car.description,
                 "review": car.review,
-                "image_url": f'/static/{car.image_url}'  
+                "image_url": car.image_url
             }, 200
 
         # Get all cars
@@ -197,7 +197,7 @@ class Cars(Resource):
                 "type": car.type,
                 "description": car.description,
                 "review": car.review,
-                "image_url": f'/static/{car.image_url}'  
+                "image_url": car.image_url 
             }
             for car in Car.query.all()
         ]
